@@ -43,3 +43,19 @@ next-env.d.ts
 # Added by MoMorph
 .mcp.json
 mcp.json
+
+# Playwright
+/playwright-report/
+/test-results/
+/playwright/.cache/
+
+# Supabase CLI local state
+supabase/.branches/
+supabase/.temp/
+
+# Editor / OS
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+

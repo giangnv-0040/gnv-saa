@@ -1,0 +1,37 @@
+{
+  "login": {
+    "welcome": {
+      "line1": "Bắt đầu hành trình của bạn cùng SAA 2025.",
+      "line2": "Đăng nhập để khám phá!"
+    },
+    "button": {
+      "label": "LOGIN With Google",
+      "loading": "Đang đăng nhập..."
+    },
+    "error": {
+      "access_denied": "Đăng nhập đã bị huỷ. Vui lòng thử lại.",
+      "domain_not_allowed": "Email này không được phép truy cập SAA.",
+      "invalid_state": "Phiên đăng nhập không hợp lệ. Vui lòng thử lại.",
+      "provider_error": "Không thể kết nối tới Google. Vui lòng thử lại.",
+      "network_error": "Lỗi mạng. Kiểm tra kết nối của bạn."
+    }
+  },
+  "language": {
+    "label": {
+      "vi": "Tiếng Việt",
+      "en": "English",
+      "ja": "日本語"
+    },
+    "code": {
+      "vi": "VN",
+      "en": "EN",
+      "ja": "JP"
+    },
+    "switcher": {
+      "ariaLabel": "Chọn ngôn ngữ"
+    }
+  },
+  "footer": {
+    "copyright": "Bản quyền thuộc về Sun* © 2025"
+  }
+}

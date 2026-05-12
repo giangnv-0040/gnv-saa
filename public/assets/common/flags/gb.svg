@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16" width="24" height="16" role="img" aria-label="United Kingdom flag">
+  <!--
+    TODO: Replace with the production Union Jack SVG sourced from the
+    Dropdown-ngôn ngữ Figma frame (hUyaaugye2) once the design team exports it.
+    This is a simplified placeholder generated during Phase 4 implementation.
+  -->
+  <rect width="24" height="16" fill="#012169"/>
+  <path d="M0 0 L24 16 M24 0 L0 16" stroke="#fff" stroke-width="3"/>
+  <path d="M0 0 L24 16 M24 0 L0 16" stroke="#C8102E" stroke-width="1.5" clip-path="inset(0)"/>
+  <rect x="10" width="4" height="16" fill="#fff"/>
+  <rect y="6" width="24" height="4" fill="#fff"/>
+  <rect x="11" width="2" height="16" fill="#C8102E"/>
+  <rect y="7" width="24" height="2" fill="#C8102E"/>
+</svg>

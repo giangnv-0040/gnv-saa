@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16" width="24" height="16" role="img" aria-label="Japan flag">
+  <!--
+    TODO: Replace with the production Japan flag SVG sourced from the
+    Dropdown-ngôn ngữ Figma frame (hUyaaugye2) once the design team exports it.
+    This is a placeholder generated during Phase 4 implementation.
+  -->
+  <rect width="24" height="16" fill="#fff"/>
+  <circle cx="12" cy="8" r="4.8" fill="#BC002D"/>
+</svg>

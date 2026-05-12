@@ -1,26 +1,83 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+/* =============================================================================
+ * gnv-saa — Design tokens
+ *
+ * Extracted from Figma nodes on the Login screen (GzbNeVGJHz):
+ *   - mms_B.3_Login (662:14425) — button frame
+ *   - Button-IC About (662:14426) — yellow CTA button (componentId 186:1567)
+ *   - mms_B.2_content (662:14753) — welcome text typography
+ *
+ * Add new tokens here when adopted from a Figma node — never hard-code raw
+ * values in components (Constitution Principle II.5 / frontend guidelines).
+ * ========================================================================== */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Surface */
+  --color-background: #ffffff;
+  --color-foreground: #00101a;
+
+  /* Brand / CTA — from Button-IC About */
+  --color-cta: rgb(255 234 158); /* #FFEA9E — yellow Google login button */
+  --color-cta-foreground: #00101a; /* dark text on yellow */
+
+  /* Login screen — dark hero theme
+     Extracted from Figma mms_C_Keyvisual (662:14388 — dark navy ground with
+     a decorative organic shape baked into an embedded vector image at
+     662:14389; the embedded image is NOT exported as a MM_MEDIA_ asset,
+     so for now we approximate the base color from the documented foreground
+     token and TODO replace once design team exports the hero artwork). */
+  --color-hero-background: #00101a;
+  --color-hero-foreground: #f5efd9; /* warm cream — same family as ROOT FURTHER letterforms */
+
+  /* Radii */
+  --radius-button: 8px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+
+  /* Spacing primitives used by the login screen */
+  --gap-login-cta: 40px; /* Frame 550: gap between welcome text and CTA */
+  --button-padding-x: 24px;
+  --button-padding-y: 16px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-cta: var(--color-cta);
+  --color-cta-foreground: var(--color-cta-foreground);
+  --color-hero-background: var(--color-hero-background);
+  --color-hero-foreground: var(--color-hero-foreground);
+  --radius-button: var(--radius-button);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --font-display: 'Montserrat', system-ui, sans-serif;
+  --font-sans: var(--font-display);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Body defaults inherit from layout.tsx (flex column, foreground/background). */
+body {
+  font-family: var(--font-sans);
+  font-feature-settings:
+    'kern' on,
+    'liga' on;
+}
+
+/* Respect reduced motion across the app. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Focus-visible ring (WCAG 2.1 AA — visible focus indicator) */
+:where(button, [role='button'], a, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-foreground);
+  outline-offset: 2px;
+  border-radius: var(--radius-md);
 }

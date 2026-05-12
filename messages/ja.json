@@ -1,0 +1,37 @@
+{
+  "login": {
+    "welcome": {
+      "line1": "SAA 2025とともに旅を始めましょう。",
+      "line2": "サインインして探検しましょう！"
+    },
+    "button": {
+      "label": "LOGIN With Google",
+      "loading": "サインイン中..."
+    },
+    "error": {
+      "access_denied": "サインインがキャンセルされました。もう一度お試しください。",
+      "domain_not_allowed": "このメールはSAAへのアクセスを許可されていません。",
+      "invalid_state": "サインインセッションが無効です。もう一度お試しください。",
+      "provider_error": "Googleに接続できませんでした。もう一度お試しください。",
+      "network_error": "ネットワークエラー。接続を確認してください。"
+    }
+  },
+  "language": {
+    "label": {
+      "vi": "Tiếng Việt",
+      "en": "English",
+      "ja": "日本語"
+    },
+    "code": {
+      "vi": "VN",
+      "en": "EN",
+      "ja": "JP"
+    },
+    "switcher": {
+      "ariaLabel": "言語を選択"
+    }
+  },
+  "footer": {
+    "copyright": "Copyright © 2025 Sun*"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "login": {
+    "welcome": {
+      "line1": "Begin your journey with SAA 2025.",
+      "line2": "Sign in to explore!"
+    },
+    "button": {
+      "label": "LOGIN With Google",
+      "loading": "Signing in..."
+    },
+    "error": {
+      "access_denied": "Sign-in was cancelled. Please try again.",
+      "domain_not_allowed": "This email is not allowed to access SAA.",
+      "invalid_state": "The sign-in session is invalid. Please try again.",
+      "provider_error": "Could not connect to Google. Please try again.",
+      "network_error": "Network error. Check your connection."
+    }
+  },
+  "language": {
+    "label": {
+      "vi": "Tiếng Việt",
+      "en": "English",
+      "ja": "日本語"
+    },
+    "code": {
+      "vi": "VN",
+      "en": "EN",
+      "ja": "JP"
+    },
+    "switcher": {
+      "ariaLabel": "Select language"
+    }
+  },
+  "footer": {
+    "copyright": "Copyright © 2025 Sun*"
+  }
+}
