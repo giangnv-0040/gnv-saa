@@ -31,9 +31,11 @@ export function NavLink({ href, exact = false, children }: NavLinkProps) {
       href={href}
       aria-current={isActive ? 'page' : undefined}
       className={[
-        'rounded-(--radius-md) px-3 py-2 text-sm font-medium transition-colors',
-        'hover:bg-foreground/5',
-        isActive ? 'text-cta underline underline-offset-4' : 'text-foreground/90',
+        'rounded-(--radius-md) px-3 py-2 text-sm font-medium transition-opacity',
+        // Active state uses the brand yellow + underline (FR-002). Inactive
+        // inherits the parent's text color and dims slightly — so the same
+        // NavLink works on a light or dark header without per-screen overrides.
+        isActive ? 'text-cta underline underline-offset-4' : 'opacity-80 hover:opacity-100',
       ].join(' ')}
     >
       {children}

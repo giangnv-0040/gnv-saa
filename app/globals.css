@@ -53,6 +53,8 @@
   --radius-lg: var(--radius-lg);
   --font-display: var(--font-montserrat), system-ui, sans-serif;
   --font-sans: var(--font-display);
+  /* Countdown digits — substitutes for Figma's "Digital Numbers" face. */
+  --font-digital: var(--font-digital), 'Courier New', monospace;
 }
 
 /* Body defaults inherit from layout.tsx (flex column, foreground/background). */

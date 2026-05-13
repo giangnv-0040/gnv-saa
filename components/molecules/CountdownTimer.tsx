@@ -51,9 +51,9 @@ export function CountdownTimer({ targetMs }: CountdownTimerProps) {
   }, [targetMs]);
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex flex-col items-start gap-4 md:gap-5">
       {!value.started ? (
-        <p className="text-sm uppercase tracking-widest text-foreground/70">
+        <p className="text-xl font-bold leading-snug opacity-95 md:text-2xl">
           {tHero('comingSoon')}
         </p>
       ) : null}
@@ -62,7 +62,7 @@ export function CountdownTimer({ targetMs }: CountdownTimerProps) {
         role="timer"
         aria-live="polite"
         aria-label={t('ariaLabel')}
-        className="flex items-center justify-center gap-4 md:gap-6"
+        className="flex items-start gap-6 md:gap-10"
       >
         <CountdownTile value={value.days} label={t('days')} />
         <CountdownTile value={value.hours} label={t('hours')} />

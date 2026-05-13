@@ -14,14 +14,17 @@ export function KudosPromoSection() {
       aria-labelledby="kudos-promo-heading"
       className="mx-auto w-full max-w-6xl px-6 py-16 md:px-10 lg:px-16"
     >
-      <div className="relative isolate overflow-hidden rounded-(--radius-lg) bg-hero-background text-hero-foreground">
+      {/* The card sits on the dark page bg; the kudos-bg artwork is brought
+          slightly forward (opacity 80) so the card reads as a distinct
+          element, not blended with the page bg. */}
+      <div className="relative isolate overflow-hidden rounded-(--radius-lg) ring-1 ring-hero-foreground/10">
         <Image
           src="/assets/homepage/images/kudos-bg.png"
           alt=""
           aria-hidden
           fill
           sizes="(min-width: 1024px) 1024px, 100vw"
-          className="-z-10 object-cover opacity-60"
+          className="-z-10 object-cover opacity-80"
         />
         <div className="grid grid-cols-1 gap-6 p-8 md:grid-cols-2 md:p-12">
           <div className="flex flex-col items-start gap-4">

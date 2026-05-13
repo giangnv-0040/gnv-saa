@@ -83,7 +83,7 @@ function HomepageFooter() {
         </ul>
       </nav>
 
-      <span className="text-foreground/70">{t('copyright')}</span>
+      <span className="opacity-70">{t('copyright')}</span>
     </footer>
   );
 }

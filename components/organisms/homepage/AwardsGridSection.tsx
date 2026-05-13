@@ -16,11 +16,11 @@ export function AwardsGridSection() {
       className="mx-auto w-full max-w-6xl px-6 py-16 md:px-10 lg:px-16"
     >
       <header className="text-center">
-        <p className="text-xs uppercase tracking-widest text-foreground/60">{t('caption')}</p>
+        <p className="text-xs uppercase tracking-widest opacity-60">{t('caption')}</p>
         <h2 id="awards-overview-heading" className="mt-3 text-3xl font-semibold tracking-tight">
           {t('title')}
         </h2>
-        <p className="mt-3 text-base text-foreground/70">{t('subtitle')}</p>
+        <p className="mt-3 text-base opacity-80">{t('subtitle')}</p>
       </header>
 
       <ul className="mt-10 grid grid-cols-2 gap-6 md:gap-8 lg:grid-cols-3">

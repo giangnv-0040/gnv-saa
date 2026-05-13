@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
+import localFont from 'next/font/local';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import './globals.css';
@@ -9,6 +10,17 @@ const montserrat = Montserrat({
   display: 'swap',
   variable: '--font-montserrat',
   weight: ['400', '500', '600', '700'],
+});
+
+// Substitute for the Figma "Digital Numbers" font. DSEG7-Classic is an
+// open-source 7-segment LCD typeface (SIL Open Font License) that mimics
+// the alarm-clock digit look in the Figma keyvisual countdown. Used only
+// on the per-digit tiles via the `--font-digital` token.
+const dseg7 = localFont({
+  src: '../public/fonts/dseg7-classic-regular.ttf',
+  display: 'swap',
+  variable: '--font-digital',
+  weight: '400',
 });
 
 export const metadata: Metadata = {
@@ -21,7 +33,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={`${montserrat.variable} h-full antialiased`}>
+    <html lang={locale} className={`${montserrat.variable} ${dseg7.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}

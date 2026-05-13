@@ -12,14 +12,26 @@ const SUPABASE_ORIGIN = (() => {
   }
 })();
 
+const IS_DEV = process.env.NODE_ENV === 'development';
+
+// `'unsafe-eval'` is required by React + Turbopack in development for HMR,
+// callstack reconstruction across server/client boundaries, and source-map
+// support. It is NEVER added in production builds (Constitution §IV — OWASP).
+const scriptSrc = ["'self'", "'unsafe-inline'", IS_DEV ? "'unsafe-eval'" : null]
+  .filter(Boolean)
+  .join(' ');
+
+// Dev mode also opens WebSocket / HTTP connections back to the Next dev
+// server (HMR, error overlay). Localhost is whitelisted only in development.
+const connectSrcDev = IS_DEV ? ' ws://localhost:* http://localhost:*' : '';
+
 const CSP_DIRECTIVES = [
   "default-src 'self'",
-  // next/script + Next.js inline runtime; tighten if/when nonces are wired up.
-  "script-src 'self' 'unsafe-inline'",
+  `script-src ${scriptSrc}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://lh3.googleusercontent.com",
   "font-src 'self' data:",
-  `connect-src 'self' ${SUPABASE_ORIGIN} https://accounts.google.com`,
+  `connect-src 'self' ${SUPABASE_ORIGIN} https://accounts.google.com${connectSrcDev}`,
   "frame-src 'self' https://accounts.google.com",
   "form-action 'self' https://accounts.google.com",
   "frame-ancestors 'none'",

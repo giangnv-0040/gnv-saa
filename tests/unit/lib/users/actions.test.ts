@@ -1,7 +1,13 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 type AuthResult = {
-  data: { user: { id: string } | null };
+  data: {
+    user: {
+      id: string;
+      email?: string;
+      user_metadata?: Record<string, unknown>;
+    } | null;
+  };
   error: { message: string } | null;
 };
 type DbResult = {
@@ -54,10 +60,42 @@ describe('getCurrentUserProfile', () => {
     await expect(getCurrentUserProfile()).resolves.toBeNull();
   });
 
-  it('returns null (does NOT throw) when the users row lookup fails', async () => {
-    authGetUser.mockResolvedValueOnce({ data: { user: { id: 'u-1' } }, error: null });
+  it('falls back to auth.users metadata when the users row lookup fails (so bell stays visible)', async () => {
+    authGetUser.mockResolvedValueOnce({
+      data: {
+        user: {
+          id: 'u-1',
+          email: 'gmail-user@gmail.com',
+          user_metadata: {
+            full_name: 'Gmail User',
+            avatar_url: 'https://cdn/gmail-avatar.png',
+          },
+        },
+      },
+      error: null,
+    });
     dbMaybeSingle.mockResolvedValueOnce({ data: null, error: { message: 'rls-denied' } });
-    await expect(getCurrentUserProfile()).resolves.toBeNull();
+    const profile = await getCurrentUserProfile();
+    expect(profile).not.toBeNull();
+    expect(profile?.id).toBe('u-1');
+    expect(profile?.email).toBe('gmail-user@gmail.com');
+    expect(profile?.displayName).toBe('Gmail User');
+    expect(profile?.avatarUrl).toBe('https://cdn/gmail-avatar.png');
+    expect(profile?.locale).toBe('vi');
+    expect(profile?.role).toBe('user');
+  });
+
+  it('falls back even when auth metadata is empty (minimal viable profile)', async () => {
+    authGetUser.mockResolvedValueOnce({
+      data: { user: { id: 'u-2', email: 'plain@gmail.com' } },
+      error: null,
+    });
+    dbMaybeSingle.mockResolvedValueOnce({ data: null, error: { message: 'missing column' } });
+    const profile = await getCurrentUserProfile();
+    expect(profile).not.toBeNull();
+    expect(profile?.displayName).toBeNull();
+    expect(profile?.avatarUrl).toBeNull();
+    expect(profile?.role).toBe('user');
   });
 
   it('returns a typed profile when the lookup succeeds (regular user)', async () => {

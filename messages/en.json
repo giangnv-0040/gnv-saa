@@ -58,11 +58,11 @@
       "minutes": "MINUTES"
     },
     "event": {
-      "timeLabel": "Time:",
-      "time": "6:30 PM",
+      "timeLabel": "Date:",
+      "time": "26/12/2025",
       "venueLabel": "Venue:",
-      "venue": "Military Arts Theater",
-      "broadcast": "Live broadcast on the Sun* Family Facebook Group"
+      "venue": "Âu Cơ Art Center",
+      "broadcast": "Live broadcast via Livestream"
     },
     "cta": {
       "aboutAwards": "ABOUT AWARDS",

@@ -28,12 +28,14 @@ interface HomepageHeaderProps {
 export function HomepageHeader({ user, unreadCount, locale }: HomepageHeaderProps) {
   return (
     <AppHeader
+      theme="dark"
       logoHref={ROUTES.HOME}
+      logoSrc="/assets/homepage/images/logo-header.png"
       nav={<HeaderNav />}
       controls={
         <>
-          <LanguageSwitcher currentLocale={locale} />
           {user !== null ? <NotificationButton unreadCount={unreadCount} /> : null}
+          <LanguageSwitcher currentLocale={locale} />
           <ProfileMenu user={user} />
         </>
       }

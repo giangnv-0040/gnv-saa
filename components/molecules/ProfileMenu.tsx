@@ -58,7 +58,7 @@ export function ProfileMenu({ user }: ProfileMenuProps) {
         aria-controls={open ? menuId : undefined}
         aria-label={t('ariaLabel')}
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-foreground/5 hover:bg-foreground/10"
+        className="inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-(--radius-md) border border-current/40 bg-current/5 hover:bg-current/10"
       >
         <ProfileAvatar user={user} />
       </button>
@@ -125,7 +125,7 @@ function ProfileAvatar({ user }: { user: UserProfile | null }) {
         aria-hidden
         width={40}
         height={40}
-        className="h-10 w-10 object-cover"
+        className="h-full w-full object-cover"
         unoptimized
       />
     );

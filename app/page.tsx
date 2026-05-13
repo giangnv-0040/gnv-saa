@@ -33,13 +33,17 @@ export default async function HomePage() {
 
       <HeroSection />
 
-      <AwardsGridSection />
-
-      <KudosPromoSection />
+      {/* Everything below the hero shares the dark navy theme — awards
+          grid, Sun* Kudos promo, and the homepage footer. The Hero section
+          already supplies its own bg art + gradient fade, so this wrapper
+          starts where the gradient lands. */}
+      <div className="bg-hero-background text-hero-foreground">
+        <AwardsGridSection />
+        <KudosPromoSection />
+        <AppFooter variant="homepage" />
+      </div>
 
       <QuickActionWidget />
-
-      <AppFooter variant="homepage" />
     </>
   );
 }

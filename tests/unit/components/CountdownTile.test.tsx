@@ -17,4 +17,19 @@ describe('<CountdownTile>', () => {
     render(<CountdownTile value={5} label="DAYS" />);
     expect(screen.getByText('DAYS')).toBeInTheDocument();
   });
+
+  it('clamps values > 99 to 99 (Figma design supports max 2 digits per group)', () => {
+    render(<CountdownTile value={231} label="DAYS" />);
+    expect(screen.getByTestId('countdown-value')).toHaveTextContent('99');
+  });
+
+  it('renders exactly 2 digit tiles regardless of the value', () => {
+    const { container } = render(<CountdownTile value={231} label="DAYS" />);
+    // Tiles are aria-hidden divs containing the visible digits; the sr-only
+    // span carries the value for assistive tech + tests.
+    const digitText = Array.from(container.querySelectorAll('[aria-hidden] span'))
+      .map((el) => el.textContent)
+      .filter((t) => /^[0-9]$/.test(t ?? ''));
+    expect(digitText).toEqual(['9', '9']);
+  });
 });

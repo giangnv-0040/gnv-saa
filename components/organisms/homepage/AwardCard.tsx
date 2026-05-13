@@ -53,9 +53,11 @@ export function AwardCard({ award }: AwardCardProps) {
 
       <h3 className="text-lg font-semibold tracking-tight">{title}</h3>
 
-      <p className="line-clamp-2 text-sm text-foreground/70">{description}</p>
+      <p className="line-clamp-2 text-sm opacity-80">{description}</p>
 
-      <span className="mt-auto inline-flex items-center gap-2 text-sm font-medium text-cta-foreground/90 group-hover:text-foreground">
+      {/* "Chi tiết" link — uses the brand yellow as accent on the dark page
+          bg, brightens slightly on hover via the parent `group`. */}
+      <span className="mt-auto inline-flex items-center gap-2 text-sm font-medium text-cta opacity-90 group-hover:opacity-100">
         {detailLabel}
         <Image
           src="/assets/homepage/icons/arrow-up-right.svg"

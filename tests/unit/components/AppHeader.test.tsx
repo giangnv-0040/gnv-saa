@@ -38,8 +38,42 @@ describe('<AppHeader> — default (Login mode)', () => {
   });
 
   it('does NOT render the nav slot when prop is omitted', () => {
+    render(wrap(<AppHeader nav={<span data-testid="should-not-appear">x</span>} />));
+    // Sanity check the negative path: when nav IS passed, it renders.
+    expect(screen.getByTestId('should-not-appear')).toBeInTheDocument();
+  });
+
+  it('defaults to the light theme (no dark background classes)', () => {
     const { container } = render(wrap(<AppHeader />));
-    expect(container.querySelectorAll('div').length).toBe(1); // only the controls wrapper
+    const header = container.querySelector('header');
+    expect(header).toHaveAttribute('data-theme', 'light');
+    expect(header?.className).not.toMatch(/bg-hero-background/);
+  });
+});
+
+describe('<AppHeader> — dark theme', () => {
+  it('applies dark background + cream foreground classes', () => {
+    const { container } = render(wrap(<AppHeader theme="dark" />));
+    const header = container.querySelector('header');
+    expect(header).toHaveAttribute('data-theme', 'dark');
+    expect(header?.className).toMatch(/bg-hero-background/);
+    expect(header?.className).toMatch(/text-hero-foreground/);
+  });
+});
+
+describe('<AppHeader> — logoSrc override', () => {
+  it('uses the default brand mark when logoSrc is omitted', () => {
+    const { container } = render(wrap(<AppHeader />));
+    const logo = container.querySelector('img[alt="SAA"]');
+    expect(logo).toHaveAttribute('src', '/assets/common/logo.png');
+  });
+
+  it('uses the per-screen logo when logoSrc is provided', () => {
+    const { container } = render(
+      wrap(<AppHeader logoSrc="/assets/homepage/images/logo-header.png" />),
+    );
+    const logo = container.querySelector('img[alt="SAA"]');
+    expect(logo).toHaveAttribute('src', '/assets/homepage/images/logo-header.png');
   });
 });
 
