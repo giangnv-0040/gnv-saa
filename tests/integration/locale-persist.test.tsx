@@ -28,7 +28,7 @@ beforeEach(() => {
 });
 
 describe('setLocale Server Action', () => {
-  it.each(['vi', 'en', 'ja'])('writes a cookie for %s', async (locale) => {
+  it.each(['vi', 'en'])('writes a cookie for %s', async (locale) => {
     await setLocale(locale);
     expect(cookieSet).toHaveBeenCalledOnce();
     const arg = cookieSet.mock.calls[0][0];
@@ -46,11 +46,13 @@ describe('setLocale Server Action', () => {
   });
 
   it('revalidates the layout so the next render picks up the new locale', async () => {
-    await setLocale('ja');
+    await setLocale('en');
     expect(revalidate).toHaveBeenCalledWith('/', 'layout');
   });
 
-  it('throws on invalid locales (defense at the trust boundary)', async () => {
+  it('throws on invalid or unsupported locales (defense at the trust boundary)', async () => {
+    // 'ja' was removed from the supported set during Homepage SAA narrowing.
+    await expect(setLocale('ja')).rejects.toThrow();
     await expect(setLocale('fr')).rejects.toThrow();
     await expect(setLocale('')).rejects.toThrow();
     await expect(setLocale(null)).rejects.toThrow();

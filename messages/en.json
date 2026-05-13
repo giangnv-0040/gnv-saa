@@ -19,19 +19,137 @@
   "language": {
     "label": {
       "vi": "Tiếng Việt",
-      "en": "English",
-      "ja": "日本語"
+      "en": "English"
     },
     "code": {
       "vi": "VN",
-      "en": "EN",
-      "ja": "JP"
+      "en": "EN"
     },
     "switcher": {
       "ariaLabel": "Select language"
     }
   },
+  "header": {
+    "nav": {
+      "logoAriaLabel": "Sun* Annual Awards 2025 — Back to homepage",
+      "about": "About SAA 2025",
+      "awards": "Awards Information",
+      "kudos": "Sun* Kudos"
+    }
+  },
   "footer": {
-    "copyright": "Copyright © 2025 Sun*"
+    "copyright": "Copyright © 2025 Sun*",
+    "nav": {
+      "about": "About SAA 2025",
+      "awards": "Awards Information",
+      "kudos": "Sun* Kudos",
+      "communityStandards": "Community Standards"
+    }
+  },
+  "homepage": {
+    "hero": {
+      "rootFurtherAlt": "ROOT FURTHER — Sun* Annual Awards 2025 theme",
+      "comingSoon": "Coming soon"
+    },
+    "countdown": {
+      "ariaLabel": "Countdown to the awards ceremony",
+      "days": "DAYS",
+      "hours": "HOURS",
+      "minutes": "MINUTES"
+    },
+    "event": {
+      "timeLabel": "Time:",
+      "time": "6:30 PM",
+      "venueLabel": "Venue:",
+      "venue": "Military Arts Theater",
+      "broadcast": "Live broadcast on the Sun* Family Facebook Group"
+    },
+    "cta": {
+      "aboutAwards": "ABOUT AWARDS",
+      "aboutKudos": "ABOUT KUDOS"
+    },
+    "description": {
+      "paragraph1": "Facing the rapid shifts of the AI era and rising customer expectations, Sun* has chosen to diversify its capabilities — not merely to lead its field, but to aim higher, where every Sunner is a problem-solver: an expert who finds answers for every project, every client, every challenge society throws our way.\nDrawn from this diversity, our adaptive growth, and the spirit of digging deeper to break through in the age of AI, “Root Further” was chosen as the official theme of the Sun* Annual Awards 2025 ceremony.\nBeyond the surface meaning, “Root Further” is the journey of stretching outward and downward, anchoring deeper, reaching for the hidden geological layers below, so we can persevere, rise, and nurture the creative passion that always burns inside Sun*. Just as roots push through every sediment to absorb what is purest, Sunners absorb from the times and the market’s challenges to renew themselves every day, expand their abilities, and root powerfully into the AI era — a brand-new, complex, unpredictable “geological layer” that also holds vast potential and opportunity.",
+      "quote": " “A tree with deep roots fears no storm”\n (English proverb)",
+      "paragraph2": "Only trees with strong enough roots survive the storm. An organization made of individuals who trust their diverse abilities, who are ready to create and to embrace challenges, who own change, is one that not only weathers turbulence but turns every advantage into conquest. More than a chapter title on Sun*'s journey, “Root Further” is a cheer, an encouragement: dare to trust yourself, dare to dig deep, unlock every potential, break every limit, become the most versatile and excellent version of yourself. Because in the AI era, diverse capability and harnessing the moment are prerequisites for endurance.\nNo one knows what mysterious layers still lie buried inside the “ground” of modern technology and the market. But once “Root Further” becomes our spirit at the root, we won’t fear any uncharted territory — we’ll be eager. Because in those infinite expanses live wonders and the chance to reach further than ever before."
+    },
+    "awards": {
+      "section": {
+        "caption": "Sun* annual awards 2025",
+        "title": "Awards System",
+        "subtitle": "Categories are awarded to the top performers in each track."
+      },
+      "list": {
+        "topTalent": {
+          "title": "Top Talent",
+          "description": "Honoring individuals who excel across every dimension"
+        },
+        "topProject": {
+          "title": "Top Project",
+          "description": "Honoring the most outstanding projects of the year"
+        },
+        "topProjectLeader": {
+          "title": "Top Project Leader",
+          "description": "Honoring Project Leaders who lead outstanding projects"
+        },
+        "bestManager": {
+          "title": "Best Manager",
+          "description": "Honoring managers who build strong, capable teams"
+        },
+        "signature2025Creator": {
+          "title": "Signature 2025 - Creator",
+          "description": "Honoring those who left a signature mark in 2025"
+        },
+        "mvp": {
+          "title": "MVP (Most Valuable Person)",
+          "description": "Honoring the individual creating the greatest value for Sun*"
+        }
+      },
+      "detailLink": "Details"
+    },
+    "kudos": {
+      "label": "Recognition movement",
+      "title": "Sun* Kudos",
+      "description": "Spread thanks and recognition to every Sunner. Every Kudo helps Sun* grow stronger.",
+      "detailLink": "Details"
+    },
+    "widget": {
+      "ariaLabel": "Open quick-action menu",
+      "viewKudo": "Write a Kudo",
+      "rules": "SAA Rules"
+    },
+    "errors": {
+      "localeSwitchFailed": "Could not change language, please try again."
+    }
+  },
+  "profile": {
+    "menu": {
+      "ariaLabel": "Open account menu",
+      "signIn": "Sign in",
+      "profile": "Profile",
+      "signOut": "Sign out",
+      "adminDashboard": "Admin Dashboard"
+    }
+  },
+  "notifications": {
+    "ariaLabel": "Open notifications",
+    "unreadBadgeLabel": "You have unread notifications",
+    "emptyState": "You have no notifications yet.",
+    "seeAll": "See all"
+  },
+  "comingSoon": {
+    "title": "Coming soon",
+    "message": "This feature is in development.",
+    "backHome": "Back to homepage"
+  },
+  "placeholders": {
+    "awards": "Awards Information",
+    "kudosBoard": "Sun* Kudos – Live board",
+    "writeKudo": "Write a Kudo",
+    "allNotifications": "All notifications",
+    "profile": "Profile",
+    "adminOverview": "Admin – Overview",
+    "rules": "SAA Rules",
+    "communityStandards": "Community Standards"
   }
 }

@@ -75,9 +75,31 @@ Architecture, specifications, and tasks live under `.momorph/`:
 - `.momorph/specs/{screenId}-{screen_name}/tasks.md` — task list
 - `.momorph/specs/{screenId}-{screen_name}/assets-map.md` — Figma → local asset mapping
 
+## Homepage SAA — operational notes
+
+### Event start datetime
+
+The hero countdown reads `NEXT_PUBLIC_EVENT_START_AT` (ISO-8601). It is a build-time constant; changing the date requires a redeploy. Invalid or missing values render the countdown as `00 00 00` and hide the "Coming soon" sub-label. Example:
+
+```bash
+NEXT_PUBLIC_EVENT_START_AT=2026-12-31T18:30:00+07:00
+```
+
+### Promoting a user to admin
+
+The Homepage profile dropdown shows an "Admin Dashboard" entry only when `public.users.role = 'admin'`. The column is locked by a server-side trigger — users cannot self-promote. Until an admin-management screen ships, set the role manually:
+
+```sql
+update public.users set role = 'admin' where email = 'someone@sun-asterisk.com';
+```
+
+### Supported locales
+
+The application supports `vi` (default) and `en`. `messages/ja.json` remains in the tree as soft-deprecated — no consumer references it. Add the locale back to `lib/i18n/config.ts` + `lib/validation/auth.ts` to re-enable it.
+
 ## Current status
 
-Phase 1 Setup complete (T001–T018). Next: Phase 2 Foundation (Supabase clients, migrations, middleware, base components) — requires the Supabase + Google OAuth prerequisites above.
+Login (`GzbNeVGJHz`) and Homepage SAA (`i87tDx10uM`) screens are implemented. Both ship with unit + integration tests under `tests/`. See [.momorph/contexts/SCREENFLOW.md](.momorph/contexts/SCREENFLOW.md) for the project-wide screen status. The remaining screens are tracked there as `pending`.
 
 ## License
 

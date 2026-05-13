@@ -1,26 +1,45 @@
-import { redirect } from 'next/navigation';
-import { createServerClient } from '@/lib/supabase/server';
+import { getLocale } from 'next-intl/server';
+import { AppFooter } from '@/components/organisms/AppFooter';
+import { AwardsGridSection } from '@/components/organisms/homepage/AwardsGridSection';
+import { HeroSection } from '@/components/organisms/homepage/HeroSection';
+import { HomepageHeader } from '@/components/organisms/homepage/HomepageHeader';
+import { KudosPromoSection } from '@/components/organisms/homepage/KudosPromoSection';
+import { QuickActionWidget } from '@/components/organisms/homepage/QuickActionWidget';
+import { getCurrentUserProfile } from '@/lib/users/actions';
+import { getUnreadCount } from '@/lib/notifications/actions';
+import { defaultLocale, isLocale } from '@/lib/i18n/config';
 
 /**
- * Temporary protected stub for Homepage SAA. The middleware also gates `/`,
- * but we re-check here defense-in-depth.
+ * Homepage SAA (frame `i87tDx10uM`).
  *
- * Replaced when the Homepage SAA feature lands (screen `i87tDx10uM`).
+ * Public landing page. Anonymous visitors are welcome (middleware no longer
+ * redirects `/` to `/login`). Per-user data is fetched in this Server
+ * Component and threaded down to the header / sections.
+ *
+ * US6 will plug HeaderNav into HomepageHeader's `nav` slot.
  */
-export default async function Home() {
-  const supabase = await createServerClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+export default async function HomePage() {
+  const [user, unreadCount, rawLocale] = await Promise.all([
+    getCurrentUserProfile(),
+    getUnreadCount(),
+    getLocale(),
+  ]);
 
-  if (!user) redirect('/login?redirectTo=%2F');
+  const locale = isLocale(rawLocale) ? rawLocale : defaultLocale;
 
   return (
-    <main className="flex flex-1 flex-col items-center justify-center px-6 py-16 text-center">
-      <h1 className="text-3xl font-semibold tracking-tight">Homepage SAA</h1>
-      <p className="mt-3 max-w-md text-base text-foreground/70">
-        Coming soon. You are signed in as <strong>{user.email}</strong>.
-      </p>
-    </main>
+    <>
+      <HomepageHeader user={user} unreadCount={unreadCount} locale={locale} />
+
+      <HeroSection />
+
+      <AwardsGridSection />
+
+      <KudosPromoSection />
+
+      <QuickActionWidget />
+
+      <AppFooter variant="homepage" />
+    </>
   );
 }

@@ -7,10 +7,11 @@ import { LOCALE_COOKIE_MAX_AGE, LOCALE_COOKIE_NAME } from './config';
 
 /**
  * Persist a locale choice to the `NEXT_LOCALE` cookie. Subsequent requests
- * pick it up in `lib/i18n/request.ts`.
+ * pick it up in `lib/i18n/request.ts` (which also gracefully ignores stale
+ * `'ja'` cookies via `isLocale`).
  *
- * Throws if the input is not one of `'vi' | 'en' | 'ja'` — callers are
- * expected to pass a value that already matches the supported set.
+ * Throws if the input is not one of `'vi' | 'en'` — callers are expected to
+ * pass a value that already matches the supported set.
  */
 export async function setLocale(locale: unknown): Promise<void> {
   const parsed = localeSchema.parse(locale);

@@ -15,11 +15,6 @@ describe('<FlagIcon>', () => {
     expect(container.querySelector('img')).toHaveAttribute('src', '/assets/common/flags/gb.svg');
   });
 
-  it('renders the Japanese flag for locale=ja', () => {
-    const { container } = render(<FlagIcon locale="ja" />);
-    expect(container.querySelector('img')).toHaveAttribute('src', '/assets/common/flags/jp.svg');
-  });
-
   it('marks the flag as decorative (empty alt + aria-hidden)', () => {
     const { container } = render(<FlagIcon locale="vi" />);
     const img = container.querySelector('img');

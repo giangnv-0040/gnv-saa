@@ -8,7 +8,7 @@ import viMessages from '@/messages/vi.json';
 const setLocale = vi.fn();
 vi.mock('@/lib/i18n/actions', () => ({ setLocale: (...args: unknown[]) => setLocale(...args) }));
 
-function wrap(ui: React.ReactNode, locale: 'vi' | 'en' | 'ja' = 'vi') {
+function wrap(ui: React.ReactNode, locale: 'vi' | 'en' = 'vi') {
   return (
     <NextIntlClientProvider locale={locale} messages={viMessages}>
       {ui}
@@ -32,13 +32,13 @@ describe('<LanguageSwitcher>', () => {
     expect(screen.queryByRole('listbox')).toBeNull();
   });
 
-  it('opens on click and exposes 3 options', async () => {
+  it('opens on click and exposes exactly the supported locales (FR-024 — VN + EN only)', async () => {
     render(wrap(<LanguageSwitcher currentLocale="vi" />));
     await userEvent.click(screen.getByRole('button'));
     const listbox = screen.getByRole('listbox');
     const options = screen.getAllByRole('option');
     expect(listbox).toBeInTheDocument();
-    expect(options).toHaveLength(3);
+    expect(options).toHaveLength(2);
   });
 
   it('marks the current locale with aria-current="true"', async () => {
@@ -81,7 +81,7 @@ describe('<LanguageSwitcher>', () => {
     expect(screen.queryByRole('listbox')).toBeNull();
   });
 
-  it('supports keyboard navigation (ArrowDown moves focus through options)', async () => {
+  it('supports keyboard navigation (ArrowDown moves focus through options + wraps)', async () => {
     render(wrap(<LanguageSwitcher currentLocale="vi" />));
     await userEvent.click(screen.getByRole('button'));
     const options = screen.getAllByRole('option');
@@ -89,10 +89,22 @@ describe('<LanguageSwitcher>', () => {
     expect(options[0]).toHaveFocus();
     await userEvent.keyboard('{ArrowDown}');
     expect(options[1]).toHaveFocus();
-    await userEvent.keyboard('{ArrowDown}');
-    expect(options[2]).toHaveFocus();
-    // Wraps to start.
+    // Wraps to start after the last option.
     await userEvent.keyboard('{ArrowDown}');
     expect(options[0]).toHaveFocus();
+  });
+
+  it('FR-026: shows a toast and keeps the dropdown closed when setLocale fails', async () => {
+    setLocale.mockRejectedValueOnce(new Error('boom'));
+    render(wrap(<LanguageSwitcher currentLocale="vi" />));
+
+    await userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('option', { name: /english/i }));
+
+    // Toast appears with the localized failure copy.
+    const toast = await screen.findByRole('status');
+    expect(toast).toHaveTextContent(viMessages.homepage.errors.localeSwitchFailed);
+    // Dropdown is closed.
+    expect(screen.queryByRole('listbox')).toBeNull();
   });
 });

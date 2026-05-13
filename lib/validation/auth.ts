@@ -12,8 +12,8 @@ export const oauthErrorCodeSchema = z.enum([
 ]);
 export type OAuthErrorCode = z.infer<typeof oauthErrorCodeSchema>;
 
-/** Supported app locales. Default is 'vi'. */
-export const localeSchema = z.enum(['vi', 'en', 'ja']);
+/** Supported app locales. Default is 'vi'. Narrowed to vi/en per Homepage spec FR-024. */
+export const localeSchema = z.enum(['vi', 'en']);
 export type Locale = z.infer<typeof localeSchema>;
 
 /**

@@ -47,11 +47,13 @@ describe('oauthCallbackQuerySchema', () => {
 });
 
 describe('localeSchema', () => {
-  it.each(['vi', 'en', 'ja'])('accepts %s', (locale) => {
+  it.each(['vi', 'en'])('accepts %s', (locale) => {
     expect(localeSchema.safeParse(locale).success).toBe(true);
   });
 
-  it.each(['VI', 'jp', 'fr', 'zh', '', null, undefined, 123])('rejects %p', (value) => {
+  // Project narrowed to vi/en for Homepage SAA (FR-024). 'ja' was removed
+  // from the supported set; messages/ja.json stays soft-deprecated.
+  it.each(['ja', 'VI', 'jp', 'fr', 'zh', '', null, undefined, 123])('rejects %p', (value) => {
     expect(localeSchema.safeParse(value).success).toBe(false);
   });
 });

@@ -1,4 +1,7 @@
-export const locales = ['vi', 'en', 'ja'] as const;
+// Supported locales. Narrowed from ['vi','en','ja'] to ['vi','en'] for Homepage
+// SAA (spec FR-024). messages/ja.json is left in the repo as soft-deprecated; no
+// consumer references it. Re-add 'ja' here if a future screen requires it.
+export const locales = ['vi', 'en'] as const;
 export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'vi';

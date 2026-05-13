@@ -4,7 +4,6 @@ import type { Locale } from '@/lib/i18n/config';
 const FLAG_BY_LOCALE: Record<Locale, string> = {
   vi: '/assets/common/flags/vn.svg',
   en: '/assets/common/flags/gb.svg',
-  ja: '/assets/common/flags/jp.svg',
 };
 
 interface FlagIconProps {

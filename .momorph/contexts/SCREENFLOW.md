@@ -7,7 +7,7 @@
 - **Figma URL**: https://www.figma.com/design/9ypp4enmFmdK3YAFJLIu6C
 - **MoMorph URL**: https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C
 - **Created**: 2026-05-11
-- **Last Updated**: 2026-05-11
+- **Last Updated**: 2026-05-13
 
 ---
 
@@ -17,9 +17,9 @@
 | ---------------------------- | ----- |
 | Total Frames in File         | 157   |
 | Top-level Screens (in scope) | ~25   |
-| Discovered                   | 1     |
-| Remaining                    | ~24   |
-| Completion                   | 4%    |
+| Discovered                   | 2     |
+| Remaining                    | ~23   |
+| Completion                   | 8%    |
 
 > Note: The Figma file contains 157 frames, but most are reusable components (Button, Color, Icon, Typography, dropdowns, hover states) or duplicate variants. The "Top-level Screens" count reflects distinct user-facing screens (web + iOS variants prefixed with `[iOS]`).
 
@@ -32,28 +32,28 @@
 
 ### Web Screens
 
-| #   | Screen Name                | Frame ID    | Figma Link                                                                 | Status     | Detail File           | Predicted APIs                                                                    | Navigations To                  |
-| --- | -------------------------- | ----------- | -------------------------------------------------------------------------- | ---------- | --------------------- | --------------------------------------------------------------------------------- | ------------------------------- |
-| 1   | Login                      | GzbNeVGJHz  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/GzbNeVGJHz) | discovered | screen_specs/login.md | `GET /api/auth/session`, `POST /api/auth/signin/google`, `GET /api/auth/callback` | Homepage SAA, Dropdown-ngôn ngữ |
-| 2   | Homepage SAA               | i87tDx10uM  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/i87tDx10uM) | pending    | —                     | TBD                                                                               | TBD                             |
-| 3   | Countdown - Prelaunch page | 8PJQswPZmU  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/8PJQswPZmU) | pending    | —                     | TBD                                                                               | TBD                             |
-| 4   | Sun\* Kudos - Live board   | MaZUn5xHXZ  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/MaZUn5xHXZ) | pending    | —                     | TBD                                                                               | TBD                             |
-| 5   | Viết Kudo                  | ihQ26W78P2  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/ihQ26W78P2) | pending    | —                     | TBD                                                                               | TBD                             |
-| 6   | View Kudo                  | onDIohs2bS  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/onDIohs2bS) | pending    | —                     | TBD                                                                               | TBD                             |
-| 7   | Hệ thống giải              | zFYDgyj_pD  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/zFYDgyj_pD) | pending    | —                     | TBD                                                                               | TBD                             |
-| 8   | Profile bản thân           | 3FoIx6ALVb  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/3FoIx6ALVb) | pending    | —                     | TBD                                                                               | TBD                             |
-| 9   | Profile người khác         | w4WUvsJ9KI  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/w4WUvsJ9KI) | pending    | —                     | TBD                                                                               | TBD                             |
-| 10  | Open secret box (chưa mở)  | J3-4YFIpMM  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/J3-4YFIpMM) | pending    | —                     | TBD                                                                               | TBD                             |
-| 11  | Tất cả thông báo           | 6-1LRz3vqr  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/6-1LRz3vqr) | pending    | —                     | TBD                                                                               | TBD                             |
-| 12  | View thông báo             | gWBVcaSVIf  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/gWBVcaSVIf) | pending    | —                     | TBD                                                                               | TBD                             |
-| 13  | Thể lệ UPDATE              | b1Filzi9i6  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/b1Filzi9i6) | pending    | —                     | TBD                                                                               | TBD                             |
-| 14  | Tiêu chuẩn cộng đồng       | Dpn7C89--r  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/Dpn7C89--r) | pending    | —                     | TBD                                                                               | TBD                             |
-| 15  | Error page - 403           | T3e_iS9PCL  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/T3e_iS9PCL) | pending    | —                     | TBD                                                                               | TBD                             |
-| 16  | Error page - 404           | p0yJ89B-9\_ | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/p0yJ89B-9_) | pending    | —                     | TBD                                                                               | TBD                             |
-| 17  | Admin - Overview           | 9ja9g9iJLW  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/9ja9g9iJLW) | pending    | —                     | TBD                                                                               | TBD                             |
-| 18  | Admin - Review content     | MTExSUSdUn  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/MTExSUSdUn) | pending    | —                     | TBD                                                                               | TBD                             |
-| 19  | Admin - Setting            | fTCVEC9aV\_ | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/fTCVEC9aV_) | pending    | —                     | TBD                                                                               | TBD                             |
-| 20  | Admin - User               | -u1lKib0JL  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/-u1lKib0JL) | pending    | —                     | TBD                                                                               | TBD                             |
+| #   | Screen Name                | Frame ID    | Figma Link                                                                 | Status          | Detail File                  | Predicted APIs                                                                                                                                                                                                         | Navigations To                                                                                                                                                                       |
+| --- | -------------------------- | ----------- | -------------------------------------------------------------------------- | --------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | Login                      | GzbNeVGJHz  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/GzbNeVGJHz) | discovered      | screen_specs/login.md        | `GET /api/auth/session`, `POST /api/auth/signin/google`, `GET /api/auth/callback`                                                                                                                                      | Homepage SAA, Dropdown-ngôn ngữ                                                                                                                                                      |
+| 2   | Homepage SAA               | i87tDx10uM  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/i87tDx10uM) | **implemented** | screen_specs/homepage-saa.md | `GET /api/auth/session`, `GET /api/users/me`, `GET /api/notifications/unread-count`, `GET /api/notifications?limit=5`, `POST /api/auth/signout`, `PUT /api/i18n/locale` (event datetime is build-time env var, no API) | Awards Information, Sun\* Kudos - Live board, Tất cả thông báo (via "See all"), Tiêu chuẩn cộng đồng, Dropdown-profile, Dropdown-ngôn ngữ, Login (on sign-out / anonymous "Sign in") |
+| 3   | Countdown - Prelaunch page | 8PJQswPZmU  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/8PJQswPZmU) | pending         | —                            | TBD                                                                                                                                                                                                                    | TBD                                                                                                                                                                                  |
+| 4   | Sun\* Kudos - Live board   | MaZUn5xHXZ  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/MaZUn5xHXZ) | pending         | —                            | TBD                                                                                                                                                                                                                    | TBD                                                                                                                                                                                  |
+| 5   | Viết Kudo                  | ihQ26W78P2  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/ihQ26W78P2) | pending         | —                            | TBD                                                                                                                                                                                                                    | TBD                                                                                                                                                                                  |
+| 6   | View Kudo                  | onDIohs2bS  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/onDIohs2bS) | pending         | —                            | TBD                                                                                                                                                                                                                    | TBD                                                                                                                                                                                  |
+| 7   | Hệ thống giải              | zFYDgyj_pD  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/zFYDgyj_pD) | pending         | —                            | TBD                                                                                                                                                                                                                    | TBD                                                                                                                                                                                  |
+| 8   | Profile bản thân           | 3FoIx6ALVb  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/3FoIx6ALVb) | pending         | —                            | TBD                                                                                                                                                                                                                    | TBD                                                                                                                                                                                  |
+| 9   | Profile người khác         | w4WUvsJ9KI  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/w4WUvsJ9KI) | pending         | —                            | TBD                                                                                                                                                                                                                    | TBD                                                                                                                                                                                  |
+| 10  | Open secret box (chưa mở)  | J3-4YFIpMM  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/J3-4YFIpMM) | pending         | —                            | TBD                                                                                                                                                                                                                    | TBD                                                                                                                                                                                  |
+| 11  | Tất cả thông báo           | 6-1LRz3vqr  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/6-1LRz3vqr) | pending         | —                            | TBD                                                                                                                                                                                                                    | TBD                                                                                                                                                                                  |
+| 12  | View thông báo             | gWBVcaSVIf  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/gWBVcaSVIf) | pending         | —                            | TBD                                                                                                                                                                                                                    | TBD                                                                                                                                                                                  |
+| 13  | Thể lệ UPDATE              | b1Filzi9i6  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/b1Filzi9i6) | pending         | —                            | TBD                                                                                                                                                                                                                    | TBD                                                                                                                                                                                  |
+| 14  | Tiêu chuẩn cộng đồng       | Dpn7C89--r  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/Dpn7C89--r) | pending         | —                            | TBD                                                                                                                                                                                                                    | TBD                                                                                                                                                                                  |
+| 15  | Error page - 403           | T3e_iS9PCL  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/T3e_iS9PCL) | pending         | —                            | TBD                                                                                                                                                                                                                    | TBD                                                                                                                                                                                  |
+| 16  | Error page - 404           | p0yJ89B-9\_ | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/p0yJ89B-9_) | pending         | —                            | TBD                                                                                                                                                                                                                    | TBD                                                                                                                                                                                  |
+| 17  | Admin - Overview           | 9ja9g9iJLW  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/9ja9g9iJLW) | pending         | —                            | TBD                                                                                                                                                                                                                    | TBD                                                                                                                                                                                  |
+| 18  | Admin - Review content     | MTExSUSdUn  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/MTExSUSdUn) | pending         | —                            | TBD                                                                                                                                                                                                                    | TBD                                                                                                                                                                                  |
+| 19  | Admin - Setting            | fTCVEC9aV\_ | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/fTCVEC9aV_) | pending         | —                            | TBD                                                                                                                                                                                                                    | TBD                                                                                                                                                                                  |
+| 20  | Admin - User               | -u1lKib0JL  | [link](https://momorph.ai/files/9ypp4enmFmdK3YAFJLIu6C/screens/-u1lKib0JL) | pending         | —                            | TBD                                                                                                                                                                                                                    | TBD                                                                                                                                                                                  |
 
 ### iOS Screens (companion app, optional scope)
 
@@ -113,15 +113,44 @@ flowchart TD
     Login -->|Language switcher| LangDropdown
     ProfileDropdown -->|Logout| Login
     E403 -->|Re-authenticate| Login
+
+    Home -->|Header 'Awards Information' / CTA 'ABOUT AWARDS' / Award card| Awards
+    Home -->|Header 'Sun* Kudos' / CTA 'ABOUT KUDOS' / Kudos 'Chi tiết'| Kudos
+    Home -->|Footer 'Tiêu chuẩn chung'| Community
+    Home -->|Bell icon| Notifications
+    Home -->|Avatar| ProfileDropdown
+    Home -->|Language switcher| LangDropdown
+    Home -->|Widget 'Viết Kudo'| WriteKudo
+    ProfileDropdown -->|'Profile'| ProfileSelf
+    ProfileDropdown -->|'Admin Dashboard' (admin only)| AdminOverview
 ```
 
-### Navigation Edges — Login (this iteration)
+### Navigation Edges — Login (initial iteration)
 
 | Trigger                                            | Destination URL                                                 | Confidence |
 | -------------------------------------------------- | --------------------------------------------------------------- | ---------- |
 | Click "LOGIN With Google" → OAuth callback success | `/` (Homepage SAA)                                              | high       |
 | Click language switcher in header                  | `#language-dropdown` (overlay, no route change)                 | high       |
 | External OAuth redirect                            | `https://accounts.google.com/...` then back to `/auth/callback` | high       |
+
+### Navigation Edges — Homepage SAA (this iteration)
+
+| Trigger                                                            | Destination URL                                         | Confidence |
+| ------------------------------------------------------------------ | ------------------------------------------------------- | ---------- |
+| Click header logo / footer logo                                    | `/` (scroll to top)                                     | high       |
+| Click "About SAA 2025" (header / footer)                           | `/` (scroll to top / `#about`)                          | high       |
+| Click "Awards Information" (header / footer) or CTA "ABOUT AWARDS" | `/awards`                                               | high       |
+| Click "Sun\* Kudos" (header / footer) or CTA "ABOUT KUDOS"         | `/kudos`                                                | high       |
+| Click award card image / title / "Chi tiết"                        | `/awards#{award-slug}` (e.g. `#top-talent`)             | high       |
+| Click "Chi tiết" in Sun\* Kudos promo block                        | `/kudos`                                                | high       |
+| Click "Tiêu chuẩn chung" (footer)                                  | `/community-standards`                                  | medium     |
+| Click bell icon                                                    | Notification overlay; or `/notifications` if full list  | high       |
+| Click language switcher (VN)                                       | `Dropdown-ngôn ngữ` overlay; `PUT /api/i18n/locale`     | high       |
+| Click avatar                                                       | `Dropdown-profile` (721:5223) overlay                   | high       |
+| Profile dropdown → "Profile"                                       | `/profile`                                              | medium     |
+| Profile dropdown → "Sign out"                                      | `POST /api/auth/signout` → `/login`                     | high       |
+| Profile dropdown → "Admin Dashboard" (admin only)                  | `/admin`                                                | high       |
+| Click floating widget pill                                         | Quick-action menu overlay (then `/kudos/new`, `/rules`) | medium     |
 
 ---
 
@@ -169,12 +198,19 @@ flowchart TD
 
 ## API Endpoints Summary
 
-| Endpoint                  | Method | Screens Using         | Purpose                                                                 |
-| ------------------------- | ------ | --------------------- | ----------------------------------------------------------------------- |
-| `/api/auth/session`       | GET    | Login                 | Detect existing Supabase session on mount                               |
-| `/api/auth/signin/google` | POST   | Login                 | Initiate Google OAuth flow via Supabase                                 |
-| `/api/auth/callback`      | GET    | Login                 | OAuth callback — exchange code for session, validate Sun\* email domain |
-| `/api/i18n/locale`        | PUT    | Login (+ all screens) | Persist locale preference (vi/en/ja)                                    |
+| Endpoint                          | Method | Screens Using           | Purpose                                                                 |
+| --------------------------------- | ------ | ----------------------- | ----------------------------------------------------------------------- |
+| `/api/auth/session`               | GET    | Login, Homepage SAA     | Detect existing Supabase session on mount                               |
+| `/api/auth/signin/google`         | POST   | Login                   | Initiate Google OAuth flow via Supabase                                 |
+| `/api/auth/callback`              | GET    | Login                   | OAuth callback — exchange code for session, validate Sun\* email domain |
+| `/api/auth/signout`               | POST   | Homepage SAA            | Sign out (clears session cookie, redirects to `/login`)                 |
+| `/api/users/me`                   | GET    | Homepage SAA, (Profile) | Load current user profile (avatar, role, locale) — auth-only            |
+| `/api/notifications`              | GET    | Notifications page      | Paginated notifications list                                            |
+| `/api/notifications?limit=5`      | GET    | Homepage SAA            | Latest N notifications for bell overlay preview — auth-only             |
+| `/api/notifications/unread-count` | GET    | Homepage SAA            | Unread-indicator badge on bell — auth-only                              |
+| `/api/i18n/locale`                | PUT    | Login (+ all screens)   | Persist locale preference (vi/en)                                       |
+
+> **Note**: Event start datetime for the Homepage SAA countdown is a build-time env var (`NEXT_PUBLIC_EVENT_START_AT`), **not** an API.
 
 > Additional endpoints (kudos, awards, users, notifications, admin) will be added as remaining screens are processed.
 
@@ -243,15 +279,20 @@ flowchart LR
 
 ## Discovery Log
 
-| Date       | Action            | Screens | Notes                                                                                                                                                          |
-| ---------- | ----------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2026-05-11 | Initial discovery | Login   | Mapped Google OAuth flow, header language switcher, and outgoing edges to Homepage SAA. Identified Header & Footer as shared components reused across screens. |
+| Date       | Action              | Screens      | Notes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| ---------- | ------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-05-11 | Initial discovery   | Login        | Mapped Google OAuth flow, header language switcher, and outgoing edges to Homepage SAA. Identified Header & Footer as shared components reused across screens.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| 2026-05-13 | Discovery           | Homepage SAA | Mapped hero (Keyvisual + Countdown + CTA), 6 award cards (Top Talent, Top Project, Top Project Leader, Best Manager, Signature 2025 - Creator, MVP), Sun\* Kudos promo, floating widget (Viết Kudo + Thể lệ SAA), footer. Hashtag deep links to `/awards#{slug}` introduced.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| 2026-05-13 | Spec review         | Homepage SAA | Locked decisions via `momorph.reviewspecify`: event datetime is env-var only (no `/api/event/config`); anonymous avatar opens a `Sign in` menu; notification bell opens an inline overlay with latest 5 + `See all` link to `/notifications`; widget overlay = `Viết Kudo` + `Thể lệ SAA`. Predicted endpoints narrowed to `users/me`, `notifications/unread-count`, `notifications?limit=5`, `auth/signout`.                                                                                                                                                                                                                                                                                                                                                                                           |
+| 2026-05-13 | MVP implementation  | Homepage SAA | Shipped Phase 1+2+3 of the plan (initial MVP — 54 tasks). Foundation: assets + DB migration + i18n + locale narrowing (vi/en) + awards catalogue + event helper + services + AppHeader/AppFooter extensions + middleware unlocked + 8 `Coming soon` placeholders. US1 (Awards discovery): AwardCard + AwardsGridSection + HomepageHeader baseline. 183 tests green.                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| 2026-05-13 | Full implementation | Homepage SAA | All 6 user stories shipped (US1–US6). US2: CountdownTile + CountdownTimer + HeroSection (live tick every 60s; FR-009 fallback). US3: BellIcon + UnreadBadge + NotificationButton + NotificationOverlay + ProfileMenu (anon/user/admin variants). US4: LanguageSwitcher wired with Toast for FR-026 failure path. US5: KudosPromoSection + QuickActionWidget (Viết Kudo / Thể lệ SAA). US6: NavLink + HeaderNav (active state via `aria-current="page"`). **Final state**: 242/242 tests pass, lint clean, typecheck clean, `next build` green (13 routes generated). Deferred: 8 E2E task IDs (T068/T077/T094/T104/T115/T125) need a running Playwright environment + the manual T008 supabase reset verification + Polish phase tasks (axe sweep + Lighthouse measurement + i18n audit can run in CI). |
 
 ---
 
 ## Next Steps
 
-- [ ] Process **Homepage SAA** (`i87tDx10uM`) next — it is the post-login landing and the hub for most outgoing edges.
+- [x] Process **Homepage SAA** (`i87tDx10uM`) — completed 2026-05-13.
+- [ ] Process **Awards Information** (`zFYDgyj_pD`) next — Homepage uses `/awards#{slug}` deep links that must be honored there.
 - [ ] Process **Sun\* Kudos - Live board**, **Viết Kudo**, **View Kudo** as a cluster (core feature).
 - [ ] Add **Profile bản thân / Profile người khác** to map user-related navigation.
 - [ ] Then admin cluster (`Admin - Overview` first).

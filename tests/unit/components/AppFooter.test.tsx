@@ -12,7 +12,7 @@ function wrap(ui: React.ReactNode) {
   );
 }
 
-describe('<AppFooter>', () => {
+describe('<AppFooter> — default (Login variant)', () => {
   it('renders a <footer role="contentinfo">', () => {
     const { container } = render(wrap(<AppFooter />));
     const footer = container.querySelector('footer');
@@ -35,5 +35,40 @@ describe('<AppFooter>', () => {
     const { container } = render(wrap(<AppFooter />));
     const footer = container.querySelector('footer');
     expect(footer?.className).toContain('mt-auto');
+  });
+});
+
+describe('<AppFooter> — homepage variant', () => {
+  it('renders logo as a link to /', () => {
+    const { container } = render(wrap(<AppFooter variant="homepage" />));
+    const logoLink = container.querySelector('a[href="/"]');
+    expect(logoLink).toBeInTheDocument();
+    expect(logoLink?.querySelector('img[alt="SAA"]')).toBeInTheDocument();
+  });
+
+  it('renders 4 footer nav links (About / Awards / Kudos / Community standards)', () => {
+    const { getByText } = render(wrap(<AppFooter variant="homepage" />));
+    expect(getByText(viMessages.footer.nav.about)).toBeInTheDocument();
+    expect(getByText(viMessages.footer.nav.awards)).toBeInTheDocument();
+    expect(getByText(viMessages.footer.nav.kudos)).toBeInTheDocument();
+    expect(getByText(viMessages.footer.nav.communityStandards)).toBeInTheDocument();
+  });
+
+  it('targets the correct routes (derived from lib/routes.ts)', () => {
+    const { container } = render(wrap(<AppFooter variant="homepage" />));
+    const hrefs = Array.from(container.querySelectorAll('a')).map((a) => a.getAttribute('href'));
+    expect(hrefs).toEqual(
+      expect.arrayContaining(['/', '/awards', '/kudos', '/community-standards']),
+    );
+  });
+
+  it('contains the localized copyright string', () => {
+    const { getByText } = render(wrap(<AppFooter variant="homepage" />));
+    expect(getByText(viMessages.footer.copyright)).toBeInTheDocument();
+  });
+
+  it('keeps mt-auto on the homepage variant too (FR-014)', () => {
+    const { container } = render(wrap(<AppFooter variant="homepage" />));
+    expect(container.querySelector('footer')?.className).toContain('mt-auto');
   });
 });

@@ -3,7 +3,6 @@ import AxeBuilder from '@axe-core/playwright';
 import { test as authTest } from './fixtures/auth';
 import viMessages from '../../messages/vi.json';
 import enMessages from '../../messages/en.json';
-import jaMessages from '../../messages/ja.json';
 
 // =============================================================================
 // US1 (P1) — Google Sign-In happy path
@@ -66,14 +65,6 @@ test.describe('US2 — Language switcher', () => {
     await page.keyboard.press('Escape');
     await expect(page.getByRole('listbox')).toBeHidden();
     await expect(page.getByText(viMessages.login.welcome.line1)).toBeVisible();
-  });
-
-  test('Japanese is selectable', async ({ page, context }) => {
-    await context.clearCookies();
-    await page.goto('/login');
-    await page.getByRole('button', { name: viMessages.language.switcher.ariaLabel }).click();
-    await page.getByRole('option', { name: viMessages.language.label.ja }).click();
-    await expect(page.getByText(jaMessages.login.welcome.line1)).toBeVisible();
   });
 });
 
@@ -150,8 +141,8 @@ test.describe('Phase 7 — accessibility + performance', () => {
       await page.goto('/login');
 
       await page.getByRole('button', { name: viMessages.language.switcher.ariaLabel }).click();
-      const targetLocale = i % 2 === 0 ? 'en' : 'ja';
-      const targetMessages = targetLocale === 'en' ? enMessages : jaMessages;
+      const targetLocale = 'en' as const;
+      const targetMessages = enMessages;
 
       const start = await page.evaluate(() => performance.now());
       await page.getByRole('option', { name: viMessages.language.label[targetLocale] }).click();

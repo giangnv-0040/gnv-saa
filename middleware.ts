@@ -5,8 +5,10 @@ import { updateSession } from '@/lib/supabase/middleware';
  * Refreshes the Supabase session cookie on every request. For protected
  * matchers it redirects unauthenticated users to /login?redirectTo=<path>.
  *
- * For MVP the only protected matcher is `/`. Admin paths will be added when
- * those features land.
+ * Homepage SAA (`/`) is intentionally NOT protected — anonymous visitors are
+ * welcome on the public landing page (spec FR-019). Admin paths and other
+ * authenticated routes will be added to `isProtectedPath` when those
+ * features land.
  */
 export async function middleware(request: NextRequest) {
   const { response, user } = await updateSession(request);
@@ -25,8 +27,10 @@ export async function middleware(request: NextRequest) {
 }
 
 function isProtectedPath(pathname: string): boolean {
-  // Initial set: only the homepage. Extend when admin/feature pages land.
-  return pathname === '/';
+  // Empty for now. Add `'/admin'`, `'/profile'`, etc. when their owning specs
+  // ship real (non-placeholder) pages. Homepage SAA is public.
+  void pathname;
+  return false;
 }
 
 export const config = {
