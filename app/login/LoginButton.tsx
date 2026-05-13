@@ -41,9 +41,12 @@ function LoginButtonInner() {
       autoFocus
       disabled={pending}
       aria-busy={pending}
-      className="w-[305px] justify-start"
+      className="min-w-[305px] justify-start"
       data-testid="login-button"
     >
+      <span className="whitespace-nowrap font-display text-xl leading-[40px] tracking-[0.5px]">
+        {pending ? t('loading') : t('label')}
+      </span>
       {pending ? (
         <Spinner className="h-6 w-6" aria-label={t('loading')} />
       ) : (
@@ -57,9 +60,6 @@ function LoginButtonInner() {
           data-testid="google-icon"
         />
       )}
-      <span className="whitespace-nowrap font-display text-xl leading-[40px] tracking-[0.5px]">
-        {pending ? t('loading') : t('label')}
-      </span>
     </Button>
   );
 }

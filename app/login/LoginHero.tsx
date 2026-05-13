@@ -27,20 +27,20 @@ interface LoginHeroProps {
 export function LoginHero({ redirectTo }: LoginHeroProps) {
   const t = useTranslations('login');
   return (
-    <section className="mx-auto flex w-full max-w-6xl flex-1 flex-col items-start justify-center px-6 py-12 sm:px-12 lg:px-20">
-      <div className="flex w-full max-w-[680px] flex-col items-start gap-10">
+    <section className="flex flex-1 flex-col items-start justify-center px-6 py-12 sm:px-12 md:pl-[80px] lg:pl-[160px]">
+      <div className="flex w-full max-w-[520px] flex-col items-start gap-10">
         <Image
           src="/assets/login/key-visual.png"
           alt=""
           width={451}
           height={200}
           priority
-          sizes="(max-width: 640px) 90vw, 580px"
-          className="h-auto w-full max-w-[580px] select-none"
+          sizes="(max-width: 640px) 90vw, 451px"
+          className="h-auto w-full max-w-[451px] select-none"
         />
 
         <p
-          className="max-w-[520px] select-none text-xl font-bold leading-[40px] tracking-[0.5px]"
+          className="max-w-[480px] select-none text-xl font-bold leading-[40px] tracking-[0.5px]"
           aria-label={`${t('welcome.line1')} ${t('welcome.line2')}`}
         >
           {t('welcome.line1')}

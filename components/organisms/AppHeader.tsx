@@ -19,7 +19,7 @@ interface AppHeaderProps {
  */
 export function AppHeader({ children }: AppHeaderProps) {
   return (
-    <header className="flex w-full items-center justify-between px-6 py-4">
+    <header className="flex w-full items-center justify-between px-6 py-4 md:px-10 lg:px-16">
       <Image
         src="/assets/common/logo.png"
         alt="SAA"

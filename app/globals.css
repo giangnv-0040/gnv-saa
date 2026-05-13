@@ -51,7 +51,7 @@
   --radius-button: var(--radius-button);
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius-lg);
-  --font-display: 'Montserrat', system-ui, sans-serif;
+  --font-display: var(--font-montserrat), system-ui, sans-serif;
   --font-sans: var(--font-display);
 }
 

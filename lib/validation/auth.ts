@@ -16,10 +16,16 @@ export type OAuthErrorCode = z.infer<typeof oauthErrorCodeSchema>;
 export const localeSchema = z.enum(['vi', 'en', 'ja']);
 export type Locale = z.infer<typeof localeSchema>;
 
-/** Query string accepted by /auth/callback (and parsed at the trust boundary). */
+/**
+ * Query string accepted by /auth/callback (and parsed at the trust boundary).
+ *
+ * Note: there is intentionally no `state` field — `@supabase/ssr` uses the
+ * PKCE flow, where CSRF protection comes from the `code_verifier` cookie
+ * (validated server-side by `exchangeCodeForSession`), not from a `state`
+ * query parameter. Adding `state` would be misleading.
+ */
 export const oauthCallbackQuerySchema = z.object({
   code: nonEmptyString.optional(),
-  state: nonEmptyString.optional(),
   error: oauthErrorCodeSchema.optional(),
   redirectTo: redirectToSchema.optional(),
 });

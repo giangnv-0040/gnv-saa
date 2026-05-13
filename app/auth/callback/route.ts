@@ -32,8 +32,11 @@ export async function GET(request: NextRequest) {
   }
 
   // ----- Step 1: parse + validate the callback query string ---------------
+  // Note: @supabase/ssr uses PKCE flow — CSRF protection comes from the
+  // code_verifier cookie (validated server-side by exchangeCodeForSession),
+  // not from a `state` query param. Our callback only needs `code`.
   const parsed = oauthCallbackQuerySchema.safeParse(rawParams);
-  if (!parsed.success || !parsed.data.code || !parsed.data.state) {
+  if (!parsed.success || !parsed.data.code) {
     return redirectToLogin(url, 'invalid_state');
   }
   const { code, redirectTo: requestedRedirect } = parsed.data;

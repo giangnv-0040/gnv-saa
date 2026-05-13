@@ -93,7 +93,7 @@ export function LanguageSwitcher({ currentLocale }: LanguageSwitcherProps) {
           role="listbox"
           aria-label={t('switcher.ariaLabel')}
           onKeyDown={onListboxKey}
-          className="absolute right-0 z-20 mt-2 w-44 rounded-(--radius-md) border border-foreground/10 bg-background py-1 shadow-lg"
+          className="absolute right-0 z-20 mt-2 w-44 rounded-(--radius-md) border border-foreground/10 bg-background py-1 text-foreground shadow-lg"
         >
           {locales.map((locale, idx) => {
             const isActive = locale === currentLocale;
@@ -108,7 +108,7 @@ export function LanguageSwitcher({ currentLocale }: LanguageSwitcherProps) {
                   aria-current={isActive ? 'true' : undefined}
                   aria-selected={isActive}
                   onClick={() => onSelect(locale)}
-                  className="flex w-full items-center gap-3 px-3 py-2 text-left text-sm hover:bg-foreground/5 aria-[current=true]:font-semibold"
+                  className="flex w-full items-center gap-3 px-3 py-2 text-left text-sm text-foreground hover:bg-foreground/5 aria-[current=true]:font-semibold"
                 >
                   <FlagIcon locale={locale} />
                   <span className="flex-1">{t(`label.${locale}`)}</span>

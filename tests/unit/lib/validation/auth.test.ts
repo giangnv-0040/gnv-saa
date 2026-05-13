@@ -6,11 +6,8 @@ import {
 } from '@/lib/validation/auth';
 
 describe('oauthCallbackQuerySchema', () => {
-  it('parses a happy-path callback (code + state)', () => {
-    const result = oauthCallbackQuerySchema.safeParse({
-      code: 'abc123',
-      state: 'state-token',
-    });
+  it('parses a happy-path callback (just code — PKCE flow, no state)', () => {
+    const result = oauthCallbackQuerySchema.safeParse({ code: 'abc123' });
     expect(result.success).toBe(true);
   });
 
@@ -21,18 +18,13 @@ describe('oauthCallbackQuerySchema', () => {
   });
 
   it('parses a callback with a safe redirectTo', () => {
-    const result = oauthCallbackQuerySchema.safeParse({
-      code: 'abc',
-      state: 'st',
-      redirectTo: '/admin',
-    });
+    const result = oauthCallbackQuerySchema.safeParse({ code: 'abc', redirectTo: '/admin' });
     expect(result.success).toBe(true);
   });
 
   it('rejects an unsafe redirectTo', () => {
     const result = oauthCallbackQuerySchema.safeParse({
       code: 'abc',
-      state: 'st',
       redirectTo: '//evil.example.com',
     });
     expect(result.success).toBe(false);
@@ -49,7 +41,7 @@ describe('oauthCallbackQuerySchema', () => {
   });
 
   it('rejects empty code string', () => {
-    const result = oauthCallbackQuerySchema.safeParse({ code: '', state: 'st' });
+    const result = oauthCallbackQuerySchema.safeParse({ code: '' });
     expect(result.success).toBe(false);
   });
 });
