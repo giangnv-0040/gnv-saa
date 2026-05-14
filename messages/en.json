@@ -151,5 +151,21 @@
     "adminOverview": "Admin – Overview",
     "rules": "SAA Rules",
     "communityStandards": "Community Standards"
+  },
+  "awardsPage": {
+    "pageCaption": "Sun* annual awards 2025",
+    "pageTitle": "SAA 2025 Awards System",
+    "sidebarAriaLabel": "Awards categories",
+    "quantityLabel": "Number of awards:",
+    "valueLabel": "Award value:",
+    "perAwardSuffix": "(per award)",
+    "longDescription": {
+      "topTalent": "Honors 10 individuals excelling across every dimension within Sun*'s domains. Each domain (one unit) awards a single Top Talent — someone with deep expertise who also radiates a learning and creative spirit.",
+      "topProject": "Honors 02 projects with the most outstanding outcomes of the year — projects that delivered remarkable value to customers and Sun* alike, representing the team's full problem-solving capability.",
+      "topProjectLeader": "Honors 03 Project Leaders who successfully drove critical projects, built strong teams, and delivered high-impact results for both clients and Sun*.",
+      "bestManager": "Honors 01 outstanding manager — someone who built a strong team, developed people, and created a positive, inspiring environment for Sunners.",
+      "signature2025Creator": "Honors 01 individual or team who left a signature mark in 2025 — a product, initiative, campaign, or moment that captured Sun*'s “Root Further” spirit.",
+      "mvp": "Honors the 01 individual who created the greatest value for Sun* this year — Most Valuable Person, the one whose impact went beyond their everyday role."
+    }
   }
 }

@@ -151,5 +151,21 @@
     "adminOverview": "Admin – Tổng quan",
     "rules": "Thể lệ SAA",
     "communityStandards": "Tiêu chuẩn cộng đồng"
+  },
+  "awardsPage": {
+    "pageCaption": "Sun* annual awards 2025",
+    "pageTitle": "Hệ thống giải thưởng SAA 2025",
+    "sidebarAriaLabel": "Danh mục giải thưởng",
+    "quantityLabel": "Số lượng giải thưởng:",
+    "valueLabel": "Giá trị giải thưởng:",
+    "perAwardSuffix": "(cho mỗi giải)",
+    "longDescription": {
+      "topTalent": "Vinh danh top 10 cá nhân xuất sắc trên mọi phương diện trong các lĩnh vực hoạt động của Sun*. Mỗi đơn vị (đại diện một lĩnh vực) sẽ trao tặng 01 giải Top Talent — cá nhân không chỉ giỏi chuyên môn mà còn lan tỏa được tinh thần học hỏi và sáng tạo.",
+      "topProject": "Vinh danh 02 dự án xuất sắc nhất năm — những dự án tạo ra giá trị nổi bật cho khách hàng và nội bộ Sun*, đại diện cho năng lực giải quyết vấn đề toàn diện của đội ngũ Sun*.",
+      "topProjectLeader": "Vinh danh 03 Project Leader đã dẫn dắt thành công các dự án trọng yếu, kiến tạo đội ngũ vững mạnh và mang lại hiệu quả cao cho cả khách hàng lẫn Sun*.",
+      "bestManager": "Vinh danh 01 nhà quản lý xuất sắc — người đã xây dựng đội ngũ vững mạnh, phát triển con người và tạo ra môi trường làm việc tích cực, đầy cảm hứng cho các Sunner.",
+      "signature2025Creator": "Vinh danh 01 cá nhân hoặc tập thể đã tạo nên dấu ấn riêng trong năm 2025 — một sản phẩm, sáng kiến, chiến dịch hoặc khoảnh khắc khắc ghi tinh thần “Root Further” của Sun*.",
+      "mvp": "Vinh danh 01 cá nhân tạo ra giá trị lớn nhất cho Sun* trong năm — Most Valuable Person, người để lại ảnh hưởng vượt ra ngoài vai trò công việc thường ngày của mình."
+    }
   }
 }

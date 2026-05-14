@@ -26,11 +26,16 @@ export async function middleware(request: NextRequest) {
   return response;
 }
 
+const PROTECTED_PATHS: readonly string[] = ['/awards'];
+
 function isProtectedPath(pathname: string): boolean {
-  // Empty for now. Add `'/admin'`, `'/profile'`, etc. when their owning specs
-  // ship real (non-placeholder) pages. Homepage SAA is public.
-  void pathname;
-  return false;
+  // Homepage SAA (`/`) is public. Awards Information (`/awards`) is protected
+  // per Hệ thống giải spec Test ID-1. Anonymous visitors arriving here are
+  // redirected to /login?redirectTo=<original-path-with-hash>.
+  //
+  // Add `'/admin'`, `'/profile'`, `/notifications`, etc. when their owning
+  // specs ship real (non-placeholder) authenticated pages.
+  return PROTECTED_PATHS.some((p) => pathname === p || pathname.startsWith(`${p}/`));
 }
 
 export const config = {
