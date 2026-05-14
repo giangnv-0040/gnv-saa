@@ -2,10 +2,15 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import type { Award, AwardDetail } from '@/lib/awards/types';
 import { AWARD_BACKGROUND_IMAGE } from '@/lib/awards/config';
+import { DiamondIcon } from '@/components/atoms/DiamondIcon';
+import { TargetIcon } from '@/components/atoms/TargetIcon';
+import { LicenseIcon } from '@/components/atoms/LicenseIcon';
 
 interface AwardDetailCardProps {
   award: Award;
   detail: AwardDetail;
+  /** When true, image column renders on the right (md+); content on the left. */
+  reverse?: boolean;
 }
 
 /**
@@ -20,7 +25,7 @@ interface AwardDetailCardProps {
  * Quantity + value rows use `target.svg` / `license.svg` icons coloured
  * by parent text (icons use `fill="currentColor"`).
  */
-export function AwardDetailCard({ award, detail }: AwardDetailCardProps) {
+export function AwardDetailCard({ award, detail, reverse = false }: AwardDetailCardProps) {
   const t = useTranslations();
   const title = t(award.titleKey);
   const description = t(detail.longDescriptionKey);
@@ -35,8 +40,14 @@ export function AwardDetailCard({ award, detail }: AwardDetailCardProps) {
       aria-labelledby={headingId}
       className="grid grid-cols-1 gap-6 scroll-mt-24 md:grid-cols-[336px_1fr] md:gap-10"
     >
-      {/* Award imagery — bg + per-award name overlay. Decorative. */}
-      <div className="relative aspect-square w-full overflow-hidden rounded-(--radius-lg) md:w-[336px]">
+      {/* Award imagery — bg + per-award name overlay. Decorative.
+          When `reverse`, render in the right column on md+ via order-2. */}
+      <div
+        className={[
+          'relative aspect-square w-full overflow-hidden rounded-(--radius-lg) md:w-[336px]',
+          reverse ? 'md:order-2' : 'md:order-1',
+        ].join(' ')}
+      >
         <Image
           src={AWARD_BACKGROUND_IMAGE}
           alt=""
@@ -57,38 +68,34 @@ export function AwardDetailCard({ award, detail }: AwardDetailCardProps) {
         </div>
       </div>
 
-      {/* Content column — title + long description + qty + value. */}
-      <div className="flex flex-col items-start gap-4 md:gap-5">
-        <h2 id={headingId} className="text-2xl font-semibold tracking-tight md:text-3xl">
+      {/* Content column — title (with diamond icon prefix) + description
+          + qty row (bracketed by horizontal rules) + value row. */}
+      <div
+        className={[
+          'flex flex-col items-start gap-4 md:gap-5',
+          reverse ? 'md:order-1' : 'md:order-2',
+        ].join(' ')}
+      >
+        <h2
+          id={headingId}
+          className="flex items-center gap-3 text-2xl font-semibold tracking-tight md:text-3xl"
+        >
+          <DiamondIcon className="h-6 w-6 shrink-0 text-cta md:h-7 md:w-7" />
           {title}
         </h2>
         <p className="text-base leading-relaxed opacity-90">{description}</p>
 
-        <dl className="mt-2 flex flex-col gap-3 text-sm md:text-base">
-          <div className="flex items-baseline gap-3">
-            <Image
-              src="/assets/awards/icons/target.svg"
-              alt=""
-              aria-hidden
-              width={20}
-              height={20}
-              unoptimized
-              className="h-5 w-5 shrink-0 text-cta"
-            />
+        <dl className="mt-2 flex w-full flex-col text-sm md:text-base">
+          <hr aria-hidden className="border-0 border-t border-hero-foreground/15" />
+          <div className="flex flex-wrap items-center gap-3 py-3">
+            <TargetIcon className="h-5 w-5 shrink-0 text-cta" />
             <dt className="opacity-80">{quantityLabel}</dt>
             <dd className="font-semibold text-cta">{detail.quantity}</dd>
             {detail.unit ? <dd className="opacity-90">{detail.unit}</dd> : null}
           </div>
-          <div className="flex flex-wrap items-baseline gap-3">
-            <Image
-              src="/assets/awards/icons/license.svg"
-              alt=""
-              aria-hidden
-              width={20}
-              height={20}
-              unoptimized
-              className="h-5 w-5 shrink-0 text-cta"
-            />
+          <hr aria-hidden className="border-0 border-t border-hero-foreground/15" />
+          <div className="flex flex-wrap items-center gap-3 py-3">
+            <LicenseIcon className="h-5 w-5 shrink-0 text-cta" />
             <dt className="opacity-80">{valueLabel}</dt>
             <dd className="font-semibold text-cta">{detail.value}</dd>
             {detail.unit ? <dd className="text-sm italic opacity-70">{perAwardSuffix}</dd> : null}

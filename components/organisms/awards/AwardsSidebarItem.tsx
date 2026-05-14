@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { TargetIcon } from '@/components/atoms/TargetIcon';
 
 interface AwardsSidebarItemProps {
   /** Award slug (matches the section anchor on the same page). */
@@ -29,21 +29,13 @@ export function AwardsSidebarItem({ slug, label, isActive, onClick }: AwardsSide
       }}
       aria-current={isActive ? 'location' : undefined}
       className={[
-        'inline-flex items-center gap-3 rounded-(--radius-md) px-3 py-2 text-base font-medium transition-opacity',
+        'inline-flex items-center gap-3 rounded-(--radius-md) px-3 py-2 text-base font-medium transition-colors',
         isActive
           ? 'text-cta underline underline-offset-4'
-          : 'opacity-80 hover:opacity-100 hover:bg-hero-foreground/5',
+          : 'text-hero-foreground hover:text-cta hover:bg-hero-foreground/5',
       ].join(' ')}
     >
-      <Image
-        src="/assets/awards/icons/target.svg"
-        alt=""
-        aria-hidden
-        width={20}
-        height={20}
-        unoptimized
-        className="h-5 w-5"
-      />
+      <TargetIcon className="h-5 w-5 shrink-0" />
       {label}
     </a>
   );
