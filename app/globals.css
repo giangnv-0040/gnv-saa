@@ -30,6 +30,17 @@
   --color-hero-background: #00101a;
   --color-hero-foreground: #f5efd9; /* warm cream — same family as ROOT FURTHER letterforms */
 
+  /* Prelaunch screen — full-bleed cover gradient
+     Extracted from Figma node 2268:35130 (Cover RECTANGLE) on the
+     `Countdown - Prelaunch page` frame. Sits on top of the hero artwork to
+     guarantee WCAG 2.1 AA contrast for the headline + countdown digits. */
+  --bg-prelaunch-cover: linear-gradient(
+    18deg,
+    #00101a 15.48%,
+    rgba(0, 18, 29, 0.46) 52.13%,
+    rgba(0, 19, 32, 0) 63.41%
+  );
+
   /* Radii */
   --radius-button: 8px;
   --radius-md: 6px;

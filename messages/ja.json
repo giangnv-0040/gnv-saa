@@ -33,5 +33,78 @@
   },
   "footer": {
     "copyright": "Copyright © 2025 Sun*"
+  },
+  "prelaunch": {
+    "heading": "イベント開始まで",
+    "units": {
+      "days": "DAYS",
+      "hours": "HOURS",
+      "minutes": "MINUTES",
+      "ariaLabel": "イベント開始までの残り時間"
+    }
+  },
+  "kudos": {
+    "write": {
+      "title": "チームメイトに感謝と称賛を贈りましょう",
+      "success": "Kudoを送信しました。ありがとうございます！",
+      "recipient": {
+        "label": "宛先",
+        "placeholder": "検索",
+        "toggleAriaLabel": "宛先リストを開く",
+        "empty": "該当するメンバーが見つかりません。"
+      },
+      "title_field": {
+        "label": "タイトル",
+        "placeholder": "チームメイトへの肩書きを贈りましょう",
+        "hint": "例：私のモチベーター。タイトルはKudoの見出しとして表示されます。"
+      },
+      "body": {
+        "placeholder": "ここで感謝と称賛をチームメイトに伝えましょう！",
+        "placeholderText": "テキスト",
+        "mentionHint": "「@ + 名前」で他のメンバーにメンションできます",
+        "communityStandards": "コミュニティガイドライン",
+        "toolbarAriaLabel": "テキスト書式",
+        "toolbar": {
+          "bold": "太字",
+          "italic": "斜体",
+          "strike": "取り消し線",
+          "numberList": "番号付きリスト",
+          "link": "リンクを挿入",
+          "quote": "引用"
+        }
+      },
+      "hashtag": {
+        "label": "ハッシュタグ",
+        "add": "ハッシュタグ",
+        "maxHint": "最大 {max}",
+        "listAriaLabel": "ハッシュタグ候補",
+        "removeAriaLabel": "{tag} を削除"
+      },
+      "image": {
+        "label": "画像",
+        "add": "画像",
+        "maxHint": "最大 {max}",
+        "removeAriaLabel": "画像を削除"
+      },
+      "anonymous": {
+        "label": "匿名で送信する"
+      },
+      "actions": {
+        "cancel": "キャンセル",
+        "submit": "送信",
+        "submitting": "送信中..."
+      },
+      "errors": {
+        "formInvalid": "必須項目をご確認ください。",
+        "server": "Kudoの送信に失敗しました。もう一度お試しください。",
+        "recipientRequired": "宛先を選択してください。",
+        "bodyRequired": "Kudoの内容を入力してください。",
+        "bodyTooLong": "内容が長すぎます。",
+        "titleTooLong": "タイトルが長すぎます。",
+        "hashtagRequired": "ハッシュタグを1つ以上選択してください。",
+        "hashtagTooMany": "ハッシュタグは最大5つです。",
+        "imagesTooMany": "画像は最大5枚です。"
+      }
+    }
   }
 }

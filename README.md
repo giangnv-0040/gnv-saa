@@ -85,6 +85,10 @@ The hero countdown reads `NEXT_PUBLIC_EVENT_START_AT` (ISO-8601). It is a build-
 NEXT_PUBLIC_EVENT_START_AT=2026-12-31T18:30:00+07:00
 ```
 
+### Prelaunch gate
+
+When `NEXT_PUBLIC_EVENT_START_AT` is set in the future, every public route renders the **prelaunch page** (`app/prelaunch/page.tsx`) — a full-bleed countdown to the event. Set the env var to a past datetime (or unset it) to ship the real app. The gate lives in `middleware.ts` (FR-001 / FR-009 fail-open) and short-circuits API routes with HTTP 503 `{ "error": "prelaunch" }` except `/api/auth/*` and `/api/healthz`.
+
 ### Promoting a user to admin
 
 The Homepage profile dropdown shows an "Admin Dashboard" entry only when `public.users.role = 'admin'`. The column is locked by a server-side trigger — users cannot self-promote. Until an admin-management screen ships, set the role manually:

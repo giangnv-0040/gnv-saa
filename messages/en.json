@@ -167,5 +167,78 @@
       "signature2025Creator": "Honors 01 individual or team who left a signature mark in 2025 — a product, initiative, campaign, or moment that captured Sun*'s “Root Further” spirit.",
       "mvp": "Honors the 01 individual who created the greatest value for Sun* this year — Most Valuable Person, the one whose impact went beyond their everyday role."
     }
+  },
+  "prelaunch": {
+    "heading": "The event starts in",
+    "units": {
+      "days": "DAYS",
+      "hours": "HOURS",
+      "minutes": "MINUTES",
+      "ariaLabel": "Time remaining until event"
+    }
+  },
+  "kudos": {
+    "write": {
+      "title": "Send appreciation and recognition to a teammate",
+      "success": "Kudo sent. Thank you!",
+      "recipient": {
+        "label": "Recipient",
+        "placeholder": "Search",
+        "toggleAriaLabel": "Open recipient list",
+        "empty": "No matching teammate found."
+      },
+      "title_field": {
+        "label": "Title",
+        "placeholder": "Give your teammate an honorific",
+        "hint": "Example: My motivator. The title will appear as the headline of your Kudo."
+      },
+      "body": {
+        "placeholder": "Send your appreciation and recognition to your teammate here!",
+        "placeholderText": "text",
+        "mentionHint": "Use \"@ + name\" to mention another teammate",
+        "communityStandards": "Community standards",
+        "toolbarAriaLabel": "Text formatting",
+        "toolbar": {
+          "bold": "Bold",
+          "italic": "Italic",
+          "strike": "Strikethrough",
+          "numberList": "Numbered list",
+          "link": "Insert link",
+          "quote": "Quote"
+        }
+      },
+      "hashtag": {
+        "label": "Hashtag",
+        "add": "Hashtag",
+        "maxHint": "Up to {max}",
+        "listAriaLabel": "Hashtag suggestions",
+        "removeAriaLabel": "Remove {tag}"
+      },
+      "image": {
+        "label": "Image",
+        "add": "Image",
+        "maxHint": "Up to {max}",
+        "removeAriaLabel": "Remove image"
+      },
+      "anonymous": {
+        "label": "Send this appreciation anonymously"
+      },
+      "actions": {
+        "cancel": "Cancel",
+        "submit": "Send",
+        "submitting": "Sending..."
+      },
+      "errors": {
+        "formInvalid": "Please review the required fields.",
+        "server": "Failed to send Kudo. Please try again.",
+        "recipientRequired": "Please choose a recipient.",
+        "bodyRequired": "Kudo content cannot be empty.",
+        "bodyTooLong": "Content is too long.",
+        "titleTooLong": "Title is too long.",
+        "hashtagRequired": "Pick at least 1 hashtag.",
+        "hashtagTooMany": "Up to 5 hashtags.",
+        "imagesTooMany": "Up to 5 images."
+      }
+    }
   }
 }

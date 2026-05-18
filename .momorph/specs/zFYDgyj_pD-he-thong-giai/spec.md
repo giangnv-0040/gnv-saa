@@ -206,7 +206,7 @@ The user uses the shared header (nav links, bell, profile menu, language switche
 
 - **TR-001**: The page MUST be a Next.js Server Component; all award content is bundled (no runtime fetch).
 - **TR-002**: Award slugs MUST come from the shared `lib/awards/config.ts` so Homepage SAA and Awards Information always agree (single source of truth).
-- **TR-003**: Award detail metadata (description, quantity, unit, value) MUST live in i18n-keyed strings (no hard-coded copy in components).
+- **TR-003**: Per-award **descriptions** MUST be i18n-keyed (so `vi` and `en` differ). Per-award **quantity / unit / value** are stored as raw strings on `awardDetails` (resolved during `reviewspecify` — unit + value stay Vietnamese in both locales). No hard-coded copy may live inside components — every visible string comes from either `lib/awards/details.ts` or the i18n catalogue.
 - **TR-004**: The sidebar component MUST be a Client Component (it uses `usePathname` / `useEffect` for scrollspy); the rest of the page MAY be Server Components.
 - **TR-005**: The page MUST be added to the protected paths in `middleware.ts`.
 - **TR-006**: All interactive controls MUST be keyboard-operable; the sidebar MUST be operable with Tab + Enter and provide visible focus indicators.
@@ -215,10 +215,12 @@ The user uses the shared header (nav links, bell, profile menu, language switche
 ### Key Entities
 
 - **Award** (shared with Homepage SAA): `{ slug: string; titleKey: string; descriptionKey: string; nameImage: string }` — already defined in `lib/awards/types.ts`.
-- **AwardDetail** (NEW): `{ slug: string; longDescriptionKey: string; quantity: string; unit: string; value: string }` — extends Award with the metadata specific to this page. Placed in `lib/awards/details.ts` keyed by the same slug.
-  - `quantity` is a pre-zero-padded 2-digit string ("10", "02", "03", "01").
-  - `unit` is a raw Vietnamese string kept for both locales ("Đơn vị" / "Tập thể" / "Cá nhân") per resolved decision.
+- **AwardDetail** (NEW): `{ slug: string; longDescriptionKey: string; quantity: string; unit: string; value: string; perAward: boolean }` — extends Award with the metadata specific to this page. Placed in `lib/awards/details.ts` keyed by the same slug.
+  - `longDescriptionKey` resolves to `awardsPage.longDescription.{slug}` — i18n-keyed so descriptions can localise.
+  - `quantity` is a pre-zero-padded 2-digit string ("10", "02", "03", "01"). No client-side padding.
+  - `unit` is a raw Vietnamese string kept for both locales ("Đơn vị" / "Tập thể" / "Cá nhân"); may be empty for awards without a unit (MVP, Signature 2025-Creator) — the UI omits the unit suffix in that case.
   - `value` is a raw VNĐ string ("7.000.000 VNĐ", etc.) — same for both locales; not localised.
+  - `perAward` is `true` for awards with multiple instances (Top Talent, Top Project, Top Project Leader) — when `true`, the UI appends the `awardsPage.perAwardSuffix` text ("(cho mỗi giải)") to the value display.
 
 ---
 
@@ -276,16 +278,22 @@ The user uses the shared header (nav links, bell, profile menu, language switche
 
 ### Display fields
 
-| Field                                   | Source                                            | Type                      | Notes                                                                                                       |
-| --------------------------------------- | ------------------------------------------------- | ------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `awards[]`                              | Static — extends `lib/awards/config.ts`           | array<Award>              | 6 entries; slug + titleKey + nameImage (already exists)                                                     |
-| `awardDetails[slug]`                    | Static — `lib/awards/details.ts` (NEW)            | record<slug, AwardDetail> | longDescriptionKey, quantity, unitKey, valueKey                                                             |
-| Title caption                           | `homepage.awards.section.caption` (reused)        | string                    | "Sun\* Annual Awards 2025"                                                                                  |
-| Page heading                            | i18n key `awardsPage.title` (NEW)                 | string                    | "Hệ thống giải thưởng SAA 2025"                                                                             |
-| Award title / description / value label | i18n catalogue per slug                           | string                    | Per-locale; vi default                                                                                      |
-| Quantity number                         | `awardDetails[slug].quantity` (pre-padded string) | string                    | Stored as already-padded string ("10", "02", "03", "01")                                                    |
-| Quantity unit                           | `awardDetails[slug].unit`                         | string                    | Vietnamese label kept for both locales: "Đơn vị" / "Tập thể" / "Cá nhân" (resolved during `reviewspecify`)  |
-| Prize value                             | `awardDetails[slug].value`                        | string                    | Raw VNĐ string ("7.000.000 VNĐ", etc.) — same value for both locales; NOT formatted via `Intl.NumberFormat` |
+| Field                  | Source                                                              | Type                      | Notes                                                                                                                                                |
+| ---------------------- | ------------------------------------------------------------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `awards[]`             | Static — `lib/awards/config.ts` (existing)                          | array<Award>              | 6 entries; slug + titleKey + descriptionKey + nameImage. Shared with Homepage SAA — single source of truth.                                          |
+| `awardDetails[slug]`   | Static — `lib/awards/details.ts` (NEW)                              | record<slug, AwardDetail> | `longDescriptionKey`, `quantity`, `unit`, `value` (see entity definition under Key Entities)                                                         |
+| Title caption          | i18n key `awardsPage.pageCaption`                                   | string                    | "Sun\* annual awards 2025" — page-scoped key (separate from Homepage's `homepage.awards.section.caption` so copy can diverge later)                  |
+| Page heading           | i18n key `awardsPage.pageTitle`                                     | string                    | "Hệ thống giải thưởng SAA 2025"                                                                                                                      |
+| Sidebar item label     | i18n key `homepage.awards.list.{slug}.title` (REUSED from Homepage) | string                    | Same text as Homepage AwardCard titles; do NOT duplicate keys                                                                                        |
+| Sidebar aria-label     | i18n key `awardsPage.sidebarAriaLabel`                              | string                    | "Danh mục giải thưởng"                                                                                                                               |
+| Award detail title     | i18n key `homepage.awards.list.{slug}.title` (REUSED)               | string                    | Same source as homepage card titles                                                                                                                  |
+| Award long description | i18n key `awardsPage.longDescription.{slug}`                        | string                    | Per-locale; vi default; this is the LONG description specific to the detail page (Homepage uses the SHORT `homepage.awards.list.{slug}.description`) |
+| Quantity label         | i18n key `awardsPage.quantityLabel`                                 | string                    | "Số lượng giải thưởng:"                                                                                                                              |
+| Value label            | i18n key `awardsPage.valueLabel`                                    | string                    | "Giá trị giải thưởng:"                                                                                                                               |
+| Per-award suffix       | i18n key `awardsPage.perAwardSuffix`                                | string                    | "(cho mỗi giải)" — appended to the value when an award has multiple instances (Top Talent, Top Project, Top Project Leader)                          |
+| Quantity number        | `awardDetails[slug].quantity` (raw string)                          | string                    | Pre-padded 2-digit string ("10", "02", "03", "01") — no client-side padding                                                                          |
+| Quantity unit          | `awardDetails[slug].unit` (raw string)                              | string                    | Vietnamese label kept for both locales: "Đơn vị" / "Tập thể" / "Cá nhân" (resolved during `reviewspecify`)                                           |
+| Prize value            | `awardDetails[slug].value` (raw string)                             | string                    | Raw VNĐ string ("7.000.000 VNĐ", etc.) — same value for both locales; NOT formatted via `Intl.NumberFormat`                                          |
 
 ### Input fields
 
@@ -395,9 +403,10 @@ None — read-only page.
 - [x] Homepage SAA spec exists (`.momorph/specs/i87tDx10uM-homepage-saa/spec.md`) — defines the slug contract
 - [x] `lib/awards/config.ts` exists with the 6 slugs (shipped with Homepage SAA)
 - [ ] `lib/awards/details.ts` (NEW) — to be created by `momorph.plan` / `momorph.implement`
-- [ ] Add i18n keys under `awardsPage.*` (caption already shared via `homepage.awards.section.caption`) — title, sidebar labels, per-award long description + quantity unit + value strings
+- [x] i18n keys under `awardsPage.*` added in [messages/vi.json](messages/vi.json) (pageCaption, pageTitle, sidebarAriaLabel, quantityLabel, valueLabel, perAwardSuffix, longDescription per slug); `messages/en.json` parity required at implementation time
 - [ ] Update `middleware.ts` — add `/awards` to `isProtectedPath()`
 - [ ] Reuse `KudosPromoSection`, `HomepageHeader`, `AppFooter variant="homepage"` from Homepage SAA
+- [ ] Sidebar item labels reuse `homepage.awards.list.{slug}.title` from Homepage SAA's i18n (no duplicate keys)
 
 ---
 

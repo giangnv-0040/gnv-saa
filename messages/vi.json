@@ -167,5 +167,78 @@
       "signature2025Creator": "Vinh danh 01 cá nhân hoặc tập thể đã tạo nên dấu ấn riêng trong năm 2025 — một sản phẩm, sáng kiến, chiến dịch hoặc khoảnh khắc khắc ghi tinh thần “Root Further” của Sun*.",
       "mvp": "Vinh danh 01 cá nhân tạo ra giá trị lớn nhất cho Sun* trong năm — Most Valuable Person, người để lại ảnh hưởng vượt ra ngoài vai trò công việc thường ngày của mình."
     }
+  },
+  "prelaunch": {
+    "heading": "Sự kiện sẽ bắt đầu sau",
+    "units": {
+      "days": "DAYS",
+      "hours": "HOURS",
+      "minutes": "MINUTES",
+      "ariaLabel": "Thời gian còn lại đến sự kiện"
+    }
+  },
+  "kudos": {
+    "write": {
+      "title": "Gửi lời cám ơn và ghi nhận đến đồng đội",
+      "success": "Đã gửi Kudo. Cảm ơn bạn!",
+      "recipient": {
+        "label": "Người nhận",
+        "placeholder": "Tìm kiếm",
+        "toggleAriaLabel": "Mở danh sách người nhận",
+        "empty": "Không tìm thấy đồng đội phù hợp."
+      },
+      "title_field": {
+        "label": "Danh hiệu",
+        "placeholder": "Dành tặng một danh hiệu cho đồng đội",
+        "hint": "Ví dụ: Người truyền động lực cho tôi. Danh hiệu sẽ hiển thị làm tiêu đề Kudos của bạn."
+      },
+      "body": {
+        "placeholder": "Hãy gửi gắm lời cám ơn và ghi nhận đến đồng đội tại đây nhé!",
+        "placeholderText": "nội dung",
+        "mentionHint": "Bạn có thể \"@ + tên\" để nhắc tới đồng nghiệp khác",
+        "communityStandards": "Tiêu chuẩn cộng đồng",
+        "toolbarAriaLabel": "Định dạng văn bản",
+        "toolbar": {
+          "bold": "In đậm",
+          "italic": "In nghiêng",
+          "strike": "Gạch ngang",
+          "numberList": "Danh sách đánh số",
+          "link": "Chèn liên kết",
+          "quote": "Trích dẫn"
+        }
+      },
+      "hashtag": {
+        "label": "Hashtag",
+        "add": "Hashtag",
+        "maxHint": "Tối đa {max}",
+        "listAriaLabel": "Danh sách hashtag",
+        "removeAriaLabel": "Xóa {tag}"
+      },
+      "image": {
+        "label": "Image",
+        "add": "Image",
+        "maxHint": "Tối đa {max}",
+        "removeAriaLabel": "Xóa ảnh"
+      },
+      "anonymous": {
+        "label": "Gửi lời cám ơn và ghi nhận ẩn danh"
+      },
+      "actions": {
+        "cancel": "Hủy",
+        "submit": "Gửi",
+        "submitting": "Đang gửi..."
+      },
+      "errors": {
+        "formInvalid": "Vui lòng kiểm tra lại các trường bắt buộc.",
+        "server": "Gửi Kudo không thành công. Vui lòng thử lại.",
+        "recipientRequired": "Vui lòng chọn người nhận.",
+        "bodyRequired": "Nội dung Kudo không được để trống.",
+        "bodyTooLong": "Nội dung quá dài.",
+        "titleTooLong": "Danh hiệu quá dài.",
+        "hashtagRequired": "Chọn ít nhất 1 hashtag.",
+        "hashtagTooMany": "Tối đa 5 hashtag.",
+        "imagesTooMany": "Tối đa 5 ảnh."
+      }
+    }
   }
 }

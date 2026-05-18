@@ -5,6 +5,13 @@ interface CountdownTileProps {
   value: number;
   /** Already-localized unit label (e.g. "DAYS"). */
   label: string;
+  /**
+   * When truthy, the tile renders this string in place of the two-digit
+   * `<DigitTile>` pair. Used by the prelaunch page to display `--` when
+   * `NEXT_PUBLIC_EVENT_START_AT` is unset / unparseable / in the past
+   * (FR-009 + plan decision #2). The unit label below remains intact.
+   */
+  placeholder?: string;
 }
 
 const MAX_DISPLAY_VALUE = 99;
@@ -23,7 +30,8 @@ const MAX_DISPLAY_VALUE = 99;
  * Screen readers see the un-split 2-digit value (the visible per-digit
  * tiles are `aria-hidden`) so announcements stay readable.
  */
-export function CountdownTile({ value, label }: CountdownTileProps) {
+export function CountdownTile({ value, label, placeholder }: CountdownTileProps) {
+  const hasPlaceholder = typeof placeholder === 'string' && placeholder !== '';
   const clamped = Math.min(Math.max(0, Math.floor(value)), MAX_DISPLAY_VALUE);
   const padded = padTwoDigits(clamped);
   const digits = padded.split('');
@@ -32,14 +40,38 @@ export function CountdownTile({ value, label }: CountdownTileProps) {
     <div className="flex flex-col items-start gap-3 md:gap-4">
       <div className="flex items-center gap-2 md:gap-3.5">
         <span className="sr-only" data-testid="countdown-value">
-          {padded}
+          {hasPlaceholder ? placeholder : padded}
         </span>
-        {digits.map((digit, idx) => (
-          <DigitTile key={idx} digit={digit} />
-        ))}
+        {hasPlaceholder ? (
+          <PlaceholderTile text={placeholder!} />
+        ) : (
+          digits.map((digit, idx) => <DigitTile key={idx} digit={digit} />)
+        )}
       </div>
       <span className="text-base font-bold uppercase tracking-wide opacity-90 md:text-2xl">
         {label}
+      </span>
+    </div>
+  );
+}
+
+function PlaceholderTile({ text }: { text: string }) {
+  return (
+    <div
+      aria-hidden
+      className="relative isolate flex h-16 w-[104px] items-center justify-center md:h-20 md:w-[114px]"
+    >
+      <div
+        className="absolute inset-0 rounded-(--radius-md) border-[0.5px] border-cta opacity-50 backdrop-blur-md"
+        style={{
+          background: 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.1) 100%)',
+        }}
+      />
+      <span
+        className="relative font-digital text-3xl leading-none text-hero-foreground md:text-[42px]"
+        style={{ fontFamily: 'var(--font-digital, "Courier New", monospace)' }}
+      >
+        {text}
       </span>
     </div>
   );

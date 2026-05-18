@@ -90,3 +90,88 @@ describe('<CountdownTimer> — fallbacks (FR-009)', () => {
     ]);
   });
 });
+
+describe('<CountdownTimer> — prelaunch extensions (plan decisions #1, #2)', () => {
+  it('hideComingSoon=true suppresses the "Coming soon" sub-label even when targetMs is in the future', () => {
+    const target = new Date('2026-01-06T05:09:00Z').getTime();
+    render(wrap(<CountdownTimer targetMs={target} hideComingSoon />));
+    expect(screen.queryByText(viMessages.homepage.hero.comingSoon)).toBeNull();
+    // Tiles still render normally.
+    expect(screen.getAllByTestId('countdown-value')).toHaveLength(3);
+  });
+
+  it('translationNamespace="prelaunch.units" resolves the new prelaunch keys for unit labels', () => {
+    const target = new Date('2026-01-06T05:09:00Z').getTime();
+    render(
+      wrap(
+        <CountdownTimer targetMs={target} translationNamespace="prelaunch.units" hideComingSoon />,
+      ),
+    );
+    // The prelaunch keys are uppercase "DAYS" / "HOURS" / "MINUTES".
+    expect(screen.getByText(viMessages.prelaunch.units.days)).toBeInTheDocument();
+    expect(screen.getByText(viMessages.prelaunch.units.hours)).toBeInTheDocument();
+    expect(screen.getByText(viMessages.prelaunch.units.minutes)).toBeInTheDocument();
+  });
+
+  it('uses prelaunch.units.ariaLabel for the aria-live region when namespaced', () => {
+    const target = new Date('2026-01-06T05:09:00Z').getTime();
+    const { container } = render(
+      wrap(
+        <CountdownTimer targetMs={target} translationNamespace="prelaunch.units" hideComingSoon />,
+      ),
+    );
+    expect(container.querySelector('[role="timer"]')).toHaveAttribute(
+      'aria-label',
+      viMessages.prelaunch.units.ariaLabel,
+    );
+  });
+
+  it('showPlaceholderOnNull + targetMs=null renders "--" in every tile instead of zeros', () => {
+    render(
+      wrap(
+        <CountdownTimer
+          targetMs={null}
+          showPlaceholderOnNull
+          translationNamespace="prelaunch.units"
+          hideComingSoon
+        />,
+      ),
+    );
+    expect(screen.getAllByTestId('countdown-value').map((t) => t.textContent)).toEqual([
+      '--',
+      '--',
+      '--',
+    ]);
+  });
+
+  it('Homepage SAA defaults (no props passed) still render zeros when targetMs is null', () => {
+    render(wrap(<CountdownTimer targetMs={null} />));
+    expect(screen.getAllByTestId('countdown-value').map((t) => t.textContent)).toEqual([
+      '00',
+      '00',
+      '00',
+    ]);
+  });
+});
+
+describe('<CountdownTimer> — visibility resync (FR-011)', () => {
+  it('recomputes remaining time from Date.now() when the tab becomes visible', () => {
+    const target = new Date('2026-01-01T00:30:00Z').getTime(); // 30 minutes away
+    render(wrap(<CountdownTimer targetMs={target} />));
+    expect(screen.getAllByTestId('countdown-value')[2]).toHaveTextContent('30');
+
+    // Simulate the tab being hidden for 10 fake-minutes WITHOUT the interval
+    // firing (mimicking a throttled background tab). We advance system time
+    // but NOT the timers — then dispatch visibilitychange to force a resync.
+    act(() => {
+      vi.setSystemTime(new Date('2026-01-01T00:10:00Z'));
+      // visibilityState is intentionally NOT toggled — production browsers
+      // dispatch visibilitychange on both hide AND show; the component must
+      // recompute on every event because it cannot trust setInterval cadence.
+      document.dispatchEvent(new Event('visibilitychange'));
+    });
+
+    // 30m - 10m elapsed = 20m remaining
+    expect(screen.getAllByTestId('countdown-value')[2]).toHaveTextContent('20');
+  });
+});

@@ -32,4 +32,26 @@ describe('<CountdownTile>', () => {
       .filter((t) => /^[0-9]$/.test(t ?? ''));
     expect(digitText).toEqual(['9', '9']);
   });
+
+  describe('placeholder prop (FR-009 / decision #2)', () => {
+    it('renders the placeholder string verbatim and emits no digit tiles', () => {
+      const { container } = render(<CountdownTile value={5} label="DAYS" placeholder="--" />);
+      expect(screen.getByTestId('countdown-value')).toHaveTextContent('--');
+      // No 2-digit tile spans should render in placeholder mode.
+      const digitText = Array.from(container.querySelectorAll('[aria-hidden] span'))
+        .map((el) => el.textContent)
+        .filter((t) => /^[0-9]$/.test(t ?? ''));
+      expect(digitText).toEqual([]);
+    });
+
+    it('keeps the unit label intact when placeholder is active', () => {
+      render(<CountdownTile value={0} label="HOURS" placeholder="--" />);
+      expect(screen.getByText('HOURS')).toBeInTheDocument();
+    });
+
+    it('falls back to digit rendering when placeholder is omitted or empty', () => {
+      render(<CountdownTile value={9} label="DAYS" placeholder="" />);
+      expect(screen.getByTestId('countdown-value')).toHaveTextContent('09');
+    });
+  });
 });
