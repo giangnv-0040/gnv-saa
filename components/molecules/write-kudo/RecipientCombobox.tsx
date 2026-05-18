@@ -109,10 +109,10 @@ export function RecipientCombobox({ recipients, value, onChange, error }: Recipi
         {t('label')}
       </FieldLabel>
 
-      <div ref={containerRef} className="relative flex-1">
+      <div ref={containerRef} className="relative w-full flex-1">
         <div
           className={[
-            'flex items-center justify-between gap-2 rounded-(--radius-button) border bg-white px-6 py-4 transition-colors',
+            'flex w-full items-center justify-between gap-2 rounded-(--radius-button) border bg-white px-6 py-4 transition-colors',
             error ? 'border-[#E53935]' : 'border-[#998C5F]',
           ].join(' ')}
         >

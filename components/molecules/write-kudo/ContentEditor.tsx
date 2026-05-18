@@ -105,31 +105,31 @@ export function ContentEditor({ value, onChange, error }: ContentEditorProps) {
         <div
           role="toolbar"
           aria-label={t('toolbarAriaLabel')}
-          className="flex flex-wrap items-center gap-1 border-b border-[#998C5F]/50 bg-white px-3 py-2"
+          className="flex items-center bg-white"
         >
           <ToolbarButton label={t('toolbar.bold')} onClick={() => applyFormat('bold')}>
-            <BoldIcon className="h-5 w-5" />
+            <BoldIcon className="h-6 w-6" />
           </ToolbarButton>
           <ToolbarButton label={t('toolbar.italic')} onClick={() => applyFormat('italic')}>
-            <ItalicIcon className="h-5 w-5" />
+            <ItalicIcon className="h-6 w-6" />
           </ToolbarButton>
           <ToolbarButton label={t('toolbar.strike')} onClick={() => applyFormat('strike')}>
-            <StrikethroughIcon className="h-5 w-5" />
+            <StrikethroughIcon className="h-6 w-6" />
           </ToolbarButton>
           <ToolbarButton label={t('toolbar.numberList')} onClick={() => applyFormat('numberList')}>
-            <NumberListIcon className="h-5 w-5" />
+            <NumberListIcon className="h-6 w-6" />
           </ToolbarButton>
           <ToolbarButton label={t('toolbar.link')} onClick={() => applyFormat('link')}>
-            <LinkIcon className="h-5 w-5" />
+            <LinkIcon className="h-6 w-6" />
           </ToolbarButton>
           <ToolbarButton label={t('toolbar.quote')} onClick={() => applyFormat('quote')}>
-            <QuoteIcon className="h-5 w-5" />
+            <QuoteIcon className="h-6 w-6" />
           </ToolbarButton>
 
           <Link
             href={ROUTES.COMMUNITY_STANDARDS}
             target="_blank"
-            className="ml-auto text-sm font-semibold text-[#C0392B] underline-offset-4 hover:underline"
+            className="ml-auto flex h-10 items-center justify-end border-b border-[#998C5F] px-4 text-base font-bold text-[#E46060] underline-offset-4 hover:underline"
           >
             {t('communityStandards')}
           </Link>
@@ -146,7 +146,7 @@ export function ContentEditor({ value, onChange, error }: ContentEditorProps) {
           aria-describedby={error ? errorId : undefined}
           maxLength={KUDO_BODY_MAX_LENGTH}
           rows={6}
-          className="w-full resize-y bg-white px-4 py-3 text-base text-foreground outline-none placeholder:text-[#999999]"
+          className="w-full resize-y bg-white px-6 py-4 text-base text-foreground outline-none placeholder:text-[#999999]"
         />
       </div>
       <p className="mt-2 text-center text-sm font-semibold text-foreground">{t('mentionHint')}</p>
@@ -169,7 +169,7 @@ function ToolbarButton({
       type="button"
       aria-label={label}
       onClick={onClick}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-(--radius-md) text-foreground/80 hover:bg-foreground/5"
+      className="inline-flex h-10 w-14 items-center justify-center border-b border-r border-[#998C5F] text-foreground/80 hover:bg-foreground/5"
     >
       {children}
     </button>

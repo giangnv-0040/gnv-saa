@@ -28,7 +28,7 @@ export function TitleField({ value, onChange, error }: TitleFieldProps) {
         {t('label')}
       </FieldLabel>
 
-      <div className="flex flex-1 flex-col">
+      <div className="flex w-full flex-1 flex-col">
         <input
           id={inputId}
           type="text"

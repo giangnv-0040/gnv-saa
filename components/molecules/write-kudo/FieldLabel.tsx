@@ -29,7 +29,7 @@ export function FieldLabel({
     <label
       htmlFor={htmlFor}
       className={[
-        'inline-flex items-center gap-0.5 text-base font-bold text-foreground',
+        'inline-flex shrink-0 items-center gap-0.5 whitespace-nowrap text-[22px] font-bold leading-7 text-foreground',
         inline ? '' : 'mb-2',
         className,
       ]
