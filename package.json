@@ -20,6 +20,7 @@
     "supabase:reset": "supabase db reset",
     "supabase:migrate": "supabase migration up",
     "check:bundle-secrets": "bash scripts/check-bundle-secrets.sh",
+    "check:i18n": "node scripts/check-i18n-parity.mjs",
     "prepare": "husky"
   },
   "lint-staged": {

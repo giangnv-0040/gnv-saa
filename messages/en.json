@@ -19,11 +19,13 @@
   "language": {
     "label": {
       "vi": "Tiếng Việt",
-      "en": "English"
+      "en": "English",
+      "ja": "Japanese"
     },
     "code": {
       "vi": "VN",
-      "en": "EN"
+      "en": "EN",
+      "ja": "JP"
     },
     "switcher": {
       "ariaLabel": "Select language"

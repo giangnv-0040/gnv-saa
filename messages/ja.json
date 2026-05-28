@@ -31,8 +31,144 @@
       "ariaLabel": "言語を選択"
     }
   },
+  "header": {
+    "nav": {
+      "logoAriaLabel": "Sun* Annual Awards 2025 — ホームへ戻る",
+      "about": "SAA 2025について",
+      "awards": "賞情報",
+      "kudos": "Sun* Kudos"
+    }
+  },
   "footer": {
-    "copyright": "Copyright © 2025 Sun*"
+    "copyright": "Copyright © 2025 Sun*",
+    "nav": {
+      "about": "SAA 2025について",
+      "awards": "賞情報",
+      "kudos": "Sun* Kudos",
+      "communityStandards": "コミュニティガイドライン"
+    }
+  },
+  "homepage": {
+    "hero": {
+      "rootFurtherAlt": "ROOT FURTHER — Sun* Annual Awards 2025 テーマ",
+      "comingSoon": "まもなく公開"
+    },
+    "countdown": {
+      "ariaLabel": "授賞式までのカウントダウン",
+      "days": "DAYS",
+      "hours": "HOURS",
+      "minutes": "MINUTES"
+    },
+    "event": {
+      "timeLabel": "日付:",
+      "time": "2025/12/26",
+      "venueLabel": "会場:",
+      "venue": "Âu Cơ Art Center",
+      "broadcast": "ライブストリーミングで生中継"
+    },
+    "cta": {
+      "aboutAwards": "ABOUT AWARDS",
+      "aboutKudos": "ABOUT KUDOS"
+    },
+    "description": {
+      "paragraph1": "AI時代の急激な変化と顧客からの高まる要求に直面する中、Sun* は能力の多様化を選択しました。それは単に各分野でリードするためだけではなく、すべての Sunner が \"problem-solver\"、つまりプロジェクト・顧客・社会のあらゆる課題に解を導く専門家となる、より高い目標を目指すためです。\nこの多様な能力、柔軟な成長、そして AI 時代に飛躍するため深く掘り下げる精神からインスピレーションを得て、\"Root Further\" は Sun* Annual Awards 2025 授賞式の公式テーマとなりました。\n表面の意味を超え、\"Root Further\" は私たちが絶えず遠くへ伸び、より深く根を張り、地中に眠る \"地層\" へ到達し、生き残り、成長し、Sun* の中で常に燃え続ける創造への情熱を育み続ける旅です。あらゆる \"堆積層\" を通り抜けて最も純粋なものを吸収する根のように、Sunner も時代と市場の挑戦から栄養を吸収し、毎日自分を更新し、能力を広げ、まったく新しく、複雑で予測不能ながら巨大な可能性と機会を秘めた AI 時代という \"地層\" にしっかりと根を下ろしているのです。",
+      "quote": " \"A tree with deep roots fears no storm\"\n (英語のことわざ)",
+      "paragraph2": "嵐の前で揺るがず立ち続けられるのは、十分強い根を持つ樹だけです。多様な能力に自信を持ち、創造と挑戦を歓迎し、変化を自らのものとする個人で構成された組織こそ、変動を乗り越えるだけでなく、あらゆる優位を活かして時代の課題を制する組織です。\"Root Further\" は Sun* の新たな章のタイトルにとどまらず、私たち一人ひとりに、自分を信じ、深く掘り下げ、あらゆる潜在能力を解き放ち、限界を超え、最も多才で最も優れた自分になることを呼びかける励ましでもあります。AI 時代において、多様な能力と時代の力を活かすことは、持続のための不可欠条件だからです。\n現代のテクノロジーと市場の \"地中\" に、まだいくつの神秘的な \"地層\" が眠っているか誰にも分かりません。けれど \"Root Further\" が私たちの根本の精神となれば、未知のどんな領域も恐れず、むしろ進む旅で出会うすべての無限の地平に胸を高鳴らせるはずです。なぜなら、その果てしない領域にこそ、これまで以上に遠くへ届く奇跡と機会が待っているからです。"
+    },
+    "awards": {
+      "section": {
+        "caption": "Sun* annual awards 2025",
+        "title": "賞制度",
+        "subtitle": "各部門のトップパフォーマーへ授与されるカテゴリーです。"
+      },
+      "list": {
+        "topTalent": {
+          "title": "Top Talent",
+          "description": "あらゆる側面で抜きん出た個人を称えます"
+        },
+        "topProject": {
+          "title": "Top Project",
+          "description": "今年最も優れたプロジェクトを称えます"
+        },
+        "topProjectLeader": {
+          "title": "Top Project Leader",
+          "description": "優れたプロジェクトを率いた Project Leader を称えます"
+        },
+        "bestManager": {
+          "title": "Best Manager",
+          "description": "強いチームを築いたマネージャーを称えます"
+        },
+        "signature2025Creator": {
+          "title": "Signature 2025 - Creator",
+          "description": "2025 年に独自の足跡を残した人を称えます"
+        },
+        "mvp": {
+          "title": "MVP (Most Valuable Person)",
+          "description": "Sun* に最大の価値をもたらした個人を称えます"
+        }
+      },
+      "detailLink": "詳細"
+    },
+    "kudos": {
+      "label": "感謝・認知ムーブメント",
+      "title": "Sun* Kudos",
+      "description": "すべての Sunner に感謝と認知を届けましょう。一つひとつの Kudo が Sun* をより強く成長させます。",
+      "detailLink": "詳細"
+    },
+    "widget": {
+      "ariaLabel": "クイックアクションメニューを開く",
+      "viewKudo": "Kudo を書く",
+      "rules": "SAA ルール"
+    },
+    "errors": {
+      "localeSwitchFailed": "言語を変更できませんでした。もう一度お試しください。"
+    }
+  },
+  "profile": {
+    "menu": {
+      "ariaLabel": "アカウントメニューを開く",
+      "signIn": "サインイン",
+      "profile": "プロフィール",
+      "signOut": "サインアウト",
+      "adminDashboard": "Admin Dashboard"
+    }
+  },
+  "notifications": {
+    "ariaLabel": "通知を開く",
+    "unreadBadgeLabel": "未読の通知があります",
+    "emptyState": "通知はまだありません。",
+    "seeAll": "すべて表示"
+  },
+  "comingSoon": {
+    "title": "まもなく公開",
+    "message": "この機能は開発中です。",
+    "backHome": "ホームへ戻る"
+  },
+  "placeholders": {
+    "awards": "賞情報",
+    "kudosBoard": "Sun* Kudos – Live board",
+    "writeKudo": "Kudo を書く",
+    "allNotifications": "すべての通知",
+    "profile": "プロフィール",
+    "adminOverview": "Admin – 概要",
+    "rules": "SAA ルール",
+    "communityStandards": "コミュニティガイドライン"
+  },
+  "awardsPage": {
+    "pageCaption": "Sun* annual awards 2025",
+    "pageTitle": "SAA 2025 賞制度",
+    "sidebarAriaLabel": "賞カテゴリー",
+    "quantityLabel": "賞の数:",
+    "valueLabel": "賞金:",
+    "perAwardSuffix": "(1 賞あたり)",
+    "longDescription": {
+      "topTalent": "Sun* の各活動領域の中で、あらゆる側面において抜きん出た 10 名の個人を称えます。各ユニット(各領域の代表)が 01 名の Top Talent を表彰します — 専門性に優れるだけでなく、学習と創造の精神を周囲に広げる人です。",
+      "topProject": "今年最も優れた 02 件のプロジェクトを称えます — 顧客と Sun* 双方に卓越した価値をもたらし、Sun* チームの総合的な問題解決力を体現したプロジェクトです。",
+      "topProjectLeader": "重要なプロジェクトを成功裡に率い、強固なチームを築き、顧客と Sun* の双方に高い成果をもたらした 03 名の Project Leader を称えます。",
+      "bestManager": "優れたマネージャー 01 名を称えます — 強固なチームを築き、メンバーを育て、ポジティブでインスピレーションに満ちた職場を Sunner のために創り出した人です。",
+      "signature2025Creator": "2025 年に独自の足跡を残した 01 名(または 01 チーム)を称えます — Sun* の \"Root Further\" 精神を体現した製品、イニシアチブ、キャンペーン、または瞬間です。",
+      "mvp": "今年 Sun* に最大の価値をもたらした 01 名 — Most Valuable Person、日々の役割を超えた影響を残した人を称えます。"
+    }
   },
   "prelaunch": {
     "heading": "イベント開始まで",
