@@ -239,6 +239,97 @@
         "hashtagTooMany": "Up to 5 hashtags.",
         "imagesTooMany": "Up to 5 images."
       }
+    },
+    "live": {
+      "hero": {
+        "title": "Appreciation & recognition board",
+        "logoAlt": "SAA 2025 KUDOS"
+      },
+      "quickCapture": {
+        "placeholder": "Today, who would you like to thank?",
+        "iconAriaLabel": "Write Kudo"
+      },
+      "sunnerSearch": {
+        "placeholder": "Search Sunner profile",
+        "buttonAriaLabel": "Search Sunner"
+      },
+      "highlight": {
+        "eyebrow": "Sun* Annual Awards 2025",
+        "title": "HIGHLIGHT KUDOS",
+        "filters": {
+          "hashtag": "Hashtag",
+          "department": "Department",
+          "clear": "Clear"
+        },
+        "carousel": {
+          "previousAriaLabel": "Previous kudo",
+          "nextAriaLabel": "Next kudo",
+          "page": "{current}/{total}"
+        },
+        "empty": "No kudo matches the filter."
+      },
+      "spotlight": {
+        "eyebrow": "Sun* Annual Awards 2025",
+        "title": "SPOTLIGHT BOARD",
+        "count": "{count} KUDOS",
+        "search": {
+          "placeholder": "Search",
+          "buttonAriaLabel": "Search Spotlight"
+        },
+        "panZoomAriaLabel": "Pan/zoom mode",
+        "loading": "Loading...",
+        "empty": "No kudos yet.",
+        "tooltip": "{name} • Latest kudo {time}",
+        "listAriaLabel": "Sunner list in Spotlight",
+        "listItem": "{name}, {count} kudos, last received {time}"
+      },
+      "feed": {
+        "eyebrow": "Sun* Annual Awards 2025",
+        "title": "ALL KUDOS",
+        "empty": "No kudos yet.",
+        "viewDetails": "View details",
+        "viewDetailsAriaLabel": "View kudo details",
+        "loadingMore": "Loading more…",
+        "copyLink": "Copy link",
+        "copyLinkSuccess": "Link copied — ready to share!",
+        "copyLinkError": "Couldn't copy. Try another browser.",
+        "likeAriaLabel": "Like this kudo",
+        "unlikeAriaLabel": "Unlike",
+        "selfLikeDisabledTooltip": "You can't like your own kudo.",
+        "likeErrorToast": "Couldn't react. Please try again.",
+        "activeFilter": {
+          "hashtag": "Filtered by {value}",
+          "team": "Filtered by team {value}",
+          "clearAriaLabel": "Clear filter"
+        },
+        "userChip": {
+          "heartsReceived": "{count} hearts received"
+        }
+      },
+      "sidebar": {
+        "stats": {
+          "kudosReceived": "Kudos received:",
+          "kudosSent": "Kudos sent:",
+          "heartsReceived": "Hearts received:",
+          "secretBoxesOpened": "Secret Boxes opened:",
+          "secretBoxesUnopened": "Secret Boxes unopened:"
+        },
+        "openBox": "Open Secret Box",
+        "openBoxDisabledTooltip": "You have no Secret Box to open yet.",
+        "secretBoxDialog": {
+          "title": "Secret Box",
+          "body": "Coming soon — come back later to open your gift!",
+          "confirm": "Got it",
+          "closeAriaLabel": "Close Secret Box dialog"
+        },
+        "leaderboard": {
+          "giftRecipients": "10 SUNNERS WHO LATEST RECEIVED A GIFT",
+          "rankPromotions": "10 SUNNERS WITH THE LATEST RANK PROMOTION",
+          "giftNote": "Received {gift}",
+          "rankPromotionNote": "Promoted to {badge}",
+          "empty": "No data yet"
+        }
+      }
     }
   }
 }

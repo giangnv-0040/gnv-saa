@@ -152,6 +152,99 @@ export function ChevronDownIcon(props: IconProps) {
   );
 }
 
+export function ChevronLeftIcon(props: IconProps) {
+  return (
+    <svg {...baseProps(props)}>
+      {props.title ? <title>{props.title}</title> : null}
+      <polyline points="15 18 9 12 15 6" />
+    </svg>
+  );
+}
+
+export function ChevronRightIcon(props: IconProps) {
+  return (
+    <svg {...baseProps(props)}>
+      {props.title ? <title>{props.title}</title> : null}
+      <polyline points="9 18 15 12 9 6" />
+    </svg>
+  );
+}
+
+export function PencilIcon(props: IconProps) {
+  return (
+    <svg {...baseProps(props)}>
+      {props.title ? <title>{props.title}</title> : null}
+      <path d="M12 20h9" />
+      <path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4z" />
+    </svg>
+  );
+}
+
+export function SearchIcon(props: IconProps) {
+  return (
+    <svg {...baseProps(props)}>
+      {props.title ? <title>{props.title}</title> : null}
+      <circle cx="11" cy="11" r="7" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </svg>
+  );
+}
+
+export function HeartIcon({ filled = false, ...props }: IconProps & { filled?: boolean }) {
+  if (filled) {
+    return (
+      <svg {...filledBaseProps(props)}>
+        {props.title ? <title>{props.title}</title> : null}
+        <path
+          d="M12 21s-7.5-4.5-9.5-9.5C1.4 8.6 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3 3.5 0 5.1 3.6 4 6.5C19.5 16.5 12 21 12 21z"
+          fill="currentColor"
+        />
+      </svg>
+    );
+  }
+  return (
+    <svg {...baseProps(props)}>
+      {props.title ? <title>{props.title}</title> : null}
+      <path d="M12 21s-7.5-4.5-9.5-9.5C1.4 8.6 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3 3.5 0 5.1 3.6 4 6.5C19.5 16.5 12 21 12 21z" />
+    </svg>
+  );
+}
+
+export function PanZoomIcon(props: IconProps) {
+  return (
+    <svg {...baseProps(props)}>
+      {props.title ? <title>{props.title}</title> : null}
+      <polyline points="3 9 3 3 9 3" />
+      <polyline points="15 3 21 3 21 9" />
+      <polyline points="21 15 21 21 15 21" />
+      <polyline points="9 21 3 21 3 15" />
+    </svg>
+  );
+}
+
+export function ArrowRightIcon(props: IconProps) {
+  return (
+    <svg {...baseProps(props)}>
+      {props.title ? <title>{props.title}</title> : null}
+      <line x1="5" y1="12" x2="19" y2="12" />
+      <polyline points="12 5 19 12 12 19" />
+    </svg>
+  );
+}
+
+export function GiftIcon(props: IconProps) {
+  return (
+    <svg {...baseProps(props)}>
+      {props.title ? <title>{props.title}</title> : null}
+      <polyline points="20 12 20 22 4 22 4 12" />
+      <rect x="2" y="7" width="20" height="5" />
+      <line x1="12" y1="22" x2="12" y2="7" />
+      <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+      <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+    </svg>
+  );
+}
+
 export function ImageIcon(props: IconProps) {
   return (
     <svg {...baseProps(props)}>

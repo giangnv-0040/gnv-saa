@@ -239,6 +239,97 @@
         "hashtagTooMany": "Tối đa 5 hashtag.",
         "imagesTooMany": "Tối đa 5 ảnh."
       }
+    },
+    "live": {
+      "hero": {
+        "title": "Hệ thống ghi nhận và cảm ơn",
+        "logoAlt": "SAA 2025 KUDOS"
+      },
+      "quickCapture": {
+        "placeholder": "Hôm nay, bạn muốn gửi lời cảm ơn và ghi nhận đến ai?",
+        "iconAriaLabel": "Viết Kudo"
+      },
+      "sunnerSearch": {
+        "placeholder": "Tìm kiếm profile Sunner",
+        "buttonAriaLabel": "Tìm kiếm Sunner"
+      },
+      "highlight": {
+        "eyebrow": "Sun* Annual Awards 2025",
+        "title": "HIGHLIGHT KUDOS",
+        "filters": {
+          "hashtag": "Hashtag",
+          "department": "Phòng ban",
+          "clear": "Bỏ chọn"
+        },
+        "carousel": {
+          "previousAriaLabel": "Kudo trước",
+          "nextAriaLabel": "Kudo tiếp",
+          "page": "{current}/{total}"
+        },
+        "empty": "Không có kudo nào khớp bộ lọc."
+      },
+      "spotlight": {
+        "eyebrow": "Sun* Annual Awards 2025",
+        "title": "SPOTLIGHT BOARD",
+        "count": "{count} KUDOS",
+        "search": {
+          "placeholder": "Tìm kiếm",
+          "buttonAriaLabel": "Tìm kiếm trên Spotlight"
+        },
+        "panZoomAriaLabel": "Chế độ pan/zoom",
+        "loading": "Đang tải...",
+        "empty": "Hiện tại chưa có Kudos nào.",
+        "tooltip": "{name} • Kudo gần nhất {time}",
+        "listAriaLabel": "Danh sách Sunner trong Spotlight",
+        "listItem": "{name}, {count} kudos, gần nhất {time}"
+      },
+      "feed": {
+        "eyebrow": "Sun* Annual Awards 2025",
+        "title": "ALL KUDOS",
+        "empty": "Hiện tại chưa có Kudos nào.",
+        "viewDetails": "Xem chi tiết",
+        "viewDetailsAriaLabel": "Xem chi tiết Kudo",
+        "loadingMore": "Đang tải thêm…",
+        "copyLink": "Copy Link",
+        "copyLinkSuccess": "Đã copy link Kudo!",
+        "copyLinkError": "Không thể copy. Hãy thử lại trong trình duyệt khác.",
+        "likeAriaLabel": "Thả tim cho Kudo",
+        "unlikeAriaLabel": "Bỏ thả tim",
+        "selfLikeDisabledTooltip": "Bạn không thể thả tim cho kudo của mình.",
+        "likeErrorToast": "Không thể thả tim, vui lòng thử lại.",
+        "activeFilter": {
+          "hashtag": "Lọc theo {value}",
+          "team": "Lọc theo phòng ban {value}",
+          "clearAriaLabel": "Bỏ lọc"
+        },
+        "userChip": {
+          "heartsReceived": "{count} tim đã nhận"
+        }
+      },
+      "sidebar": {
+        "stats": {
+          "kudosReceived": "Số Kudos bạn nhận được:",
+          "kudosSent": "Số Kudos bạn đã gửi:",
+          "heartsReceived": "Số tim bạn nhận được:",
+          "secretBoxesOpened": "Số Secret Box bạn đã mở:",
+          "secretBoxesUnopened": "Số Secret Box chưa mở:"
+        },
+        "openBox": "Mở Secret Box",
+        "openBoxDisabledTooltip": "Bạn chưa có Secret Box nào để mở.",
+        "secretBoxDialog": {
+          "title": "Secret Box",
+          "body": "Tính năng đang phát triển. Hãy quay lại sau để mở quà nhé!",
+          "confirm": "Đã hiểu",
+          "closeAriaLabel": "Đóng hộp thoại Secret Box"
+        },
+        "leaderboard": {
+          "giftRecipients": "10 SUNNER NHẬN QUÀ MỚI NHẤT",
+          "rankPromotions": "10 SUNNER CÓ SỰ THĂNG HẠNG MỚI NHẤT",
+          "giftNote": "Nhận được {gift}",
+          "rankPromotionNote": "Lên hạng {badge}",
+          "empty": "Chưa có dữ liệu"
+        }
+      }
     }
   }
 }

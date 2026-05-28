@@ -31,3 +31,20 @@ export type RoutePath = (typeof ROUTES)[RouteKey];
 export function awardDeepLink(slug: string): string {
   return `${ROUTES.AWARDS}#${slug}`;
 }
+
+/**
+ * Build the canonical Kudo detail path. The detail page is out of scope of
+ * the live board spec but the navigation contract (US10) is owned here.
+ */
+export function kudoDetailPath(kudoId: string): string {
+  return `${ROUTES.KUDOS}/${encodeURIComponent(kudoId)}`;
+}
+
+/** Build a filtered `/kudos` URL — used by HashtagChip (FR-019). */
+export function kudosFeedPath(params: { hashtag?: string; team?: string }): string {
+  const search = new URLSearchParams();
+  if (params.hashtag) search.set('hashtag', params.hashtag);
+  if (params.team) search.set('team', params.team);
+  const qs = search.toString();
+  return qs ? `${ROUTES.KUDOS}?${qs}` : ROUTES.KUDOS;
+}

@@ -3,6 +3,7 @@ import { Montserrat } from 'next/font/google';
 import localFont from 'next/font/local';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
+import { QueryProvider } from '@/components/providers/QueryProvider';
 import './globals.css';
 
 const montserrat = Montserrat({
@@ -36,7 +37,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang={locale} className={`${montserrat.variable} ${dseg7.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
+          <QueryProvider>{children}</QueryProvider>
         </NextIntlClientProvider>
       </body>
     </html>
