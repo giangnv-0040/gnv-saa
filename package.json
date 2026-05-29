@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run check:i18n && tsc --noEmit && next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
@@ -17,8 +17,9 @@
     "test:e2e:ui": "playwright test --config=tests/e2e/playwright.config.ts --ui",
     "supabase:start": "supabase start",
     "supabase:stop": "supabase stop",
-    "supabase:reset": "supabase db reset",
+    "supabase:reset": "supabase db reset && npm run db:seed:dev",
     "supabase:migrate": "supabase migration up",
+    "db:seed:dev": "for f in supabase/dev-seeds/*.sql; do PGPASSWORD=postgres psql -h 127.0.0.1 -p 54322 -U postgres -d postgres -f \"$f\"; done",
     "check:bundle-secrets": "bash scripts/check-bundle-secrets.sh",
     "check:i18n": "node scripts/check-i18n-parity.mjs",
     "prepare": "husky"
