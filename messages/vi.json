@@ -334,6 +334,12 @@
           "empty": "Chưa có dữ liệu"
         }
       }
+    },
+    "detail": {
+      "backToBoard": "Quay lại bảng tin",
+      "notFoundTitle": "Không tìm thấy Kudo",
+      "notFoundBody": "Kudo này có thể đã bị xoá hoặc liên kết không chính xác.",
+      "imageAlt": "Ảnh đính kèm Kudo"
     }
   }
 }

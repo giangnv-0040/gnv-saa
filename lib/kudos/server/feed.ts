@@ -96,6 +96,22 @@ export async function fetchFeed(query: FeedQuery): Promise<FeedPage> {
   return { items, nextCursor };
 }
 
+export async function fetchKudoById(id: string): Promise<Kudo | null> {
+  const supabase = await createServerClient();
+  const { data, error } = await supabase
+    .from('kudo_with_aggregates')
+    .select('*')
+    .eq('id', id)
+    .maybeSingle();
+
+  if (error) throw new Error(`fetchKudoById failed: ${error.message}`);
+  if (!data) return null;
+
+  const row = data as KudoAggregateRow;
+  const lookup = await loadChildren(supabase, [row.id]);
+  return toKudo(row, lookup);
+}
+
 export async function fetchHighlight(query: HighlightQuery): Promise<readonly Kudo[]> {
   const supabase = await createServerClient();
   let q = supabase
