@@ -239,7 +239,9 @@
         "titleTooLong": "タイトルが長すぎます。",
         "hashtagRequired": "ハッシュタグを1つ以上選択してください。",
         "hashtagTooMany": "ハッシュタグは最大5つです。",
-        "imagesTooMany": "画像は最大5枚です。"
+        "imagesTooMany": "画像は最大5枚です。",
+        "imagesInvalid": "アップロードした画像の一部が無効です。もう一度お試しください。",
+        "imagesUploadFailed": "画像のアップロードに失敗しました。もう一度お試しください。"
       }
     },
     "live": {

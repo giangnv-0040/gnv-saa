@@ -239,7 +239,9 @@
         "titleTooLong": "Danh hiệu quá dài.",
         "hashtagRequired": "Chọn ít nhất 1 hashtag.",
         "hashtagTooMany": "Tối đa 5 hashtag.",
-        "imagesTooMany": "Tối đa 5 ảnh."
+        "imagesTooMany": "Tối đa 5 ảnh.",
+        "imagesInvalid": "Một ảnh tải lên không hợp lệ. Vui lòng thử lại.",
+        "imagesUploadFailed": "Không thể tải ảnh lên. Vui lòng thử lại."
       }
     },
     "live": {

@@ -8,7 +8,7 @@ describe('validateWriteKudo', () => {
       title: 'Người truyền cảm hứng',
       body: 'Cảm ơn vì đã luôn lắng nghe.',
       hashtags: ['teamwork', 'kindness'],
-      imagesCount: 2,
+      imageUrls: ['https://example.com/a.png', 'https://example.com/b.png'],
       anonymous: false,
     });
     expect(errors).toBeNull();
@@ -19,7 +19,7 @@ describe('validateWriteKudo', () => {
       recipientId: '',
       body: 'Cảm ơn nhiều!',
       hashtags: ['teamwork'],
-      imagesCount: 0,
+      imageUrls: [],
       anonymous: false,
     });
     expect(errors?.recipientId).toBe('recipientRequired');
@@ -30,7 +30,7 @@ describe('validateWriteKudo', () => {
       recipientId: 'u-nhat',
       body: '   ',
       hashtags: ['teamwork'],
-      imagesCount: 0,
+      imageUrls: [],
       anonymous: false,
     });
     expect(errors?.body).toBe('bodyRequired');
@@ -41,7 +41,7 @@ describe('validateWriteKudo', () => {
       recipientId: 'u-nhat',
       body: 'OK',
       hashtags: [],
-      imagesCount: 0,
+      imageUrls: [],
       anonymous: false,
     });
     expect(errors?.hashtags).toBe('hashtagRequired');
@@ -52,7 +52,7 @@ describe('validateWriteKudo', () => {
       recipientId: 'u-nhat',
       body: 'OK',
       hashtags: ['a', 'b', 'c', 'd', 'e', 'f'],
-      imagesCount: 0,
+      imageUrls: [],
       anonymous: false,
     });
     expect(errors?.hashtags).toBe('hashtagTooMany');
@@ -63,10 +63,28 @@ describe('validateWriteKudo', () => {
       recipientId: 'u-nhat',
       body: 'OK',
       hashtags: ['teamwork'],
-      imagesCount: 6,
+      imageUrls: [
+        'https://example.com/1.png',
+        'https://example.com/2.png',
+        'https://example.com/3.png',
+        'https://example.com/4.png',
+        'https://example.com/5.png',
+        'https://example.com/6.png',
+      ],
       anonymous: false,
     });
     expect(errors?.images).toBe('imagesTooMany');
+  });
+
+  it('flags an invalid image URL as "imagesInvalid"', () => {
+    const errors = validateWriteKudo({
+      recipientId: 'u-nhat',
+      body: 'OK',
+      hashtags: ['teamwork'],
+      imageUrls: ['not-a-url'],
+      anonymous: false,
+    });
+    expect(errors?.images).toBe('imagesInvalid');
   });
 
   it('accepts an optional title omitted', () => {
@@ -74,7 +92,7 @@ describe('validateWriteKudo', () => {
       recipientId: 'u-nhat',
       body: 'OK',
       hashtags: ['teamwork'],
-      imagesCount: 0,
+      imageUrls: [],
       anonymous: false,
     });
     expect(errors).toBeNull();

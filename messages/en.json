@@ -239,7 +239,9 @@
         "titleTooLong": "Title is too long.",
         "hashtagRequired": "Pick at least 1 hashtag.",
         "hashtagTooMany": "Up to 5 hashtags.",
-        "imagesTooMany": "Up to 5 images."
+        "imagesTooMany": "Up to 5 images.",
+        "imagesInvalid": "One of the uploaded images is invalid. Please try again.",
+        "imagesUploadFailed": "Image upload failed. Please try again."
       }
     },
     "live": {

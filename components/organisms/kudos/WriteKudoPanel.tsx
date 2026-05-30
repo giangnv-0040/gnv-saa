@@ -16,6 +16,7 @@ import { track } from '@/lib/analytics/track';
 import { HASHTAG_SUGGESTIONS } from '@/lib/kudos/mock';
 import { ROUTES } from '@/lib/routes';
 import type { KudoImage, Recipient } from '@/lib/kudos/types';
+import { uploadKudoImages } from '@/lib/kudos/uploadImages';
 import { validateWriteKudo, type WriteKudoFieldErrors } from '@/lib/kudos/validation';
 
 interface WriteKudoPanelProps {
@@ -57,12 +58,21 @@ export function WriteKudoPanel({ recipients }: WriteKudoPanelProps) {
   }, [router]);
 
   const handleSubmit = useCallback(() => {
+    // Pre-flight validation runs without imageUrls (those come from the
+    // upload step). We still cap the image count here so the user sees the
+    // error before uploading anything.
+    if (images.length > 5) {
+      setErrors({ images: 'imagesTooMany' });
+      setToast({ message: tError('formInvalid'), tone: 'error' });
+      return;
+    }
+
     const fieldErrors = validateWriteKudo({
       recipientId: recipientId ?? '',
       title: title.trim() || undefined,
       body,
       hashtags,
-      imagesCount: images.length,
+      imageUrls: [],
       anonymous,
     });
 
@@ -75,13 +85,22 @@ export function WriteKudoPanel({ recipients }: WriteKudoPanelProps) {
     setErrors({});
 
     startTransition(async () => {
+      const uploaded = await uploadKudoImages(images);
+      if (!uploaded.ok) {
+        setToast({
+          message: tError(uploaded.code === 'unauthenticated' ? 'server' : 'imagesUploadFailed'),
+          tone: 'error',
+        });
+        return;
+      }
+
       const result = await submitKudoAction({
         recipientId: recipientId!,
         title: title.trim(),
         body: body.trim(),
         hashtags,
         anonymous,
-        imagesCount: images.length,
+        imageUrls: uploaded.urls,
       });
 
       if (!result.ok && 'errors' in result) {
@@ -97,7 +116,7 @@ export function WriteKudoPanel({ recipients }: WriteKudoPanelProps) {
       track('kudo_submitted', {
         anonymous,
         hashtags: hashtags.length,
-        images: images.length,
+        images: uploaded.urls.length,
       });
 
       setToast({ message: t('success'), tone: 'success' });
@@ -111,7 +130,7 @@ export function WriteKudoPanel({ recipients }: WriteKudoPanelProps) {
       setAnonymous(false);
       setTimeout(() => router.push(ROUTES.HOME), 1200);
     });
-  }, [anonymous, body, hashtags, images.length, recipientId, router, t, tError, title]);
+  }, [anonymous, body, hashtags, images, recipientId, router, t, tError, title]);
 
   return (
     <section
