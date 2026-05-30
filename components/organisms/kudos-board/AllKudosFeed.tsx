@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef } from 'react';
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { KudoCard } from '@/components/molecules/kudos-board/KudoCard';
@@ -87,25 +88,25 @@ function ActiveFilterBadge({ hashtag, team }: { hashtag: string | null; team: st
       {hashtag ? (
         <span className="inline-flex items-center gap-2 rounded-full border border-[#FFEA9E]/30 bg-[#FFEA9E]/10 px-3 py-1 text-xs font-semibold text-[#FFEA9E]">
           {t('hashtag', { value: `#${hashtag}` })}
-          <a
+          <Link
             href="/kudos"
             aria-label={t('clearAriaLabel')}
             className="text-[#FFEA9E] hover:underline"
           >
             ×
-          </a>
+          </Link>
         </span>
       ) : null}
       {team ? (
         <span className="inline-flex items-center gap-2 rounded-full border border-[#FFEA9E]/30 bg-[#FFEA9E]/10 px-3 py-1 text-xs font-semibold text-[#FFEA9E]">
           {t('team', { value: team })}
-          <a
+          <Link
             href="/kudos"
             aria-label={t('clearAriaLabel')}
             className="text-[#FFEA9E] hover:underline"
           >
             ×
-          </a>
+          </Link>
         </span>
       ) : null}
     </div>

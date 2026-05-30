@@ -334,6 +334,12 @@
           "empty": "データがありません"
         }
       }
+    },
+    "detail": {
+      "backToBoard": "ライブボードに戻る",
+      "notFoundTitle": "Kudoが見つかりません",
+      "notFoundBody": "このKudoは削除されたか、リンクが正しくない可能性があります。",
+      "imageAlt": "Kudoの添付画像"
     }
   }
 }
