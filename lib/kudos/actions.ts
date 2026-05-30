@@ -12,7 +12,7 @@ export interface SubmitKudoPayload {
   body: string;
   hashtags: string[];
   anonymous: boolean;
-  imagesCount: number;
+  imageUrls: string[];
 }
 
 export type SubmitKudoResult =
@@ -21,15 +21,16 @@ export type SubmitKudoResult =
   | { ok: false; serverError: string };
 
 /**
- * Persists a Kudo + its hashtags to Supabase. The sender is taken from the
- * Supabase Auth session — never trusted from the payload (RLS also enforces
- * `sender_id = auth.uid()` server-side). On success the `/kudos` live board
- * is revalidated so the new row shows up after a client redirect.
+ * Persists a Kudo + its hashtags + its image attachments to Supabase. The
+ * sender is taken from the Supabase Auth session — never trusted from the
+ * payload (RLS also enforces `sender_id = auth.uid()` server-side).
  *
- * Image attachments are out of scope here: the form currently only tracks
- * an `imagesCount` (preview URLs are blob: refs that don't survive a server
- * round-trip). A follow-up will wire Supabase Storage uploads + an array of
- * persisted URLs through this action.
+ * Image files are uploaded client-side to the `kudo-images` bucket before
+ * this action runs; the caller passes in the resulting public URLs which
+ * are then mirrored into `public.kudo_images`.
+ *
+ * On success the `/kudos` live board is revalidated so the new row shows
+ * up after a client redirect.
  */
 export async function submitKudoAction(payload: SubmitKudoPayload): Promise<SubmitKudoResult> {
   const parsed = writeKudoSchema.safeParse(payload);
@@ -39,7 +40,7 @@ export async function submitKudoAction(payload: SubmitKudoPayload): Promise<Subm
       const path = issue.path[0];
       const code = issue.message as WriteKudoFieldErrors[keyof WriteKudoFieldErrors];
       if (typeof path === 'string' && code) {
-        if (path === 'imagesCount') errors.images = code;
+        if (path === 'imageUrls') errors.images = code;
         else (errors as Record<string, typeof code>)[path] = code;
       }
     }
@@ -95,11 +96,27 @@ export async function submitKudoAction(payload: SubmitKudoPayload): Promise<Subm
     }
   }
 
+  if (parsed.data.imageUrls.length > 0) {
+    const rows = parsed.data.imageUrls.map((url, position) => ({
+      kudo_id: kudo.id,
+      url,
+      position,
+    }));
+    const { error: imagesErr } = await supabase.from('kudo_images').insert(rows);
+    if (imagesErr) {
+      logger.error('kudo.submit.images_failed', {
+        kudoId: kudo.id,
+        error: imagesErr.message,
+      });
+      return { ok: false, serverError: imagesErr.message };
+    }
+  }
+
   logger.info('kudo.submit.ok', {
     kudoId: kudo.id,
     recipientId: parsed.data.recipientId,
     hashtags: parsed.data.hashtags.length,
-    images: parsed.data.imagesCount,
+    images: parsed.data.imageUrls.length,
     anonymous: parsed.data.anonymous,
   });
 

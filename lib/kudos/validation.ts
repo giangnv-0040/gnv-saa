@@ -7,9 +7,10 @@ import {
 } from './types';
 
 /**
- * Client-side schema for the Viết Kudo form. The `images` field is validated
- * separately because `File` is not safely transferable through Zod without a
- * runtime check; we only validate the count here.
+ * Client-side schema for the Viết Kudo form. `imageUrls` holds the URLs of
+ * images already uploaded to Supabase Storage by the time the form is
+ * submitted — the actual `File` objects are not transferable through the
+ * server action boundary.
  */
 export const writeKudoSchema = z.object({
   recipientId: z.string().min(1, { message: 'recipientRequired' }),
@@ -23,7 +24,9 @@ export const writeKudoSchema = z.object({
     .array(z.string().trim().min(1))
     .min(1, { message: 'hashtagRequired' })
     .max(KUDO_MAX_HASHTAGS, { message: 'hashtagTooMany' }),
-  imagesCount: z.number().int().min(0).max(KUDO_MAX_IMAGES, { message: 'imagesTooMany' }),
+  imageUrls: z
+    .array(z.string().url({ message: 'imagesInvalid' }))
+    .max(KUDO_MAX_IMAGES, { message: 'imagesTooMany' }),
   anonymous: z.boolean(),
 });
 
@@ -37,7 +40,8 @@ export type WriteKudoErrorCode =
   | 'titleTooLong'
   | 'hashtagRequired'
   | 'hashtagTooMany'
-  | 'imagesTooMany';
+  | 'imagesTooMany'
+  | 'imagesInvalid';
 
 export interface WriteKudoFieldErrors {
   recipientId?: WriteKudoErrorCode;
@@ -63,7 +67,7 @@ export function validateWriteKudo(input: WriteKudoSchemaInput): WriteKudoFieldEr
     else if (path === 'title') errors.title = code;
     else if (path === 'body') errors.body = code;
     else if (path === 'hashtags') errors.hashtags = code;
-    else if (path === 'imagesCount') errors.images = code;
+    else if (path === 'imageUrls') errors.images = code;
   }
   return Object.keys(errors).length === 0 ? null : errors;
 }
