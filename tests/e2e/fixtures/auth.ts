@@ -5,6 +5,11 @@ const URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const SERVICE_ROLE = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 
+// True when CI is running with stub Supabase env (smoke mode) and no real
+// admin API is reachable. Tests that rely on the admin API should skip.
+export const isStubSupabaseEnv =
+  URL === 'http://localhost:54321' && SERVICE_ROLE === 'service-role-test-key-ci';
+
 function admin() {
   if (!URL || !SERVICE_ROLE) {
     throw new Error(

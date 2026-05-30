@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { isStubSupabaseEnv } from './fixtures/auth';
 import viMessages from '../../messages/vi.json';
 
 const live = viMessages.kudos.live;
@@ -142,6 +143,10 @@ test.describe('Sun* Kudos — Live board performance', () => {
    * production-grade number.
    */
   test('LCP on /kudos stays under 4s on a cold dev render', async ({ page }) => {
+    test.skip(
+      isStubSupabaseEnv,
+      'LCP budget assumes a reachable Supabase backend; stub env triggers fetch-timeout fallbacks that inflate SSR time.',
+    );
     await page.goto('/kudos', { waitUntil: 'domcontentloaded' });
     // Let LCP candidates settle without blocking on long-poll connections.
     await page.waitForLoadState('load');

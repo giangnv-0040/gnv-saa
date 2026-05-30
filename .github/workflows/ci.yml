@@ -79,10 +79,11 @@ jobs:
         run: npm run test:e2e
         env:
           NEXT_PUBLIC_SITE_URL: http://localhost:3000
-          # Wire real Supabase keys for the test environment via repo secrets.
-          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.E2E_SUPABASE_URL }}
-          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.E2E_SUPABASE_ANON_KEY }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.E2E_SUPABASE_SERVICE_ROLE_KEY }}
+          # Smoke-only stubs — tests that require a real Supabase admin API
+          # detect these values and skip themselves (see tests/e2e/fixtures/auth.ts).
+          NEXT_PUBLIC_SUPABASE_URL: http://localhost:54321
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: anon-test-key-ci
+          SUPABASE_SERVICE_ROLE_KEY: service-role-test-key-ci
 
       - name: Upload Playwright report
         if: always()

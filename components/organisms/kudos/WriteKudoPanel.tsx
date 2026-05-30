@@ -13,10 +13,14 @@ import { RecipientCombobox } from '@/components/molecules/write-kudo/RecipientCo
 import { TitleField } from '@/components/molecules/write-kudo/TitleField';
 import { submitKudoAction } from '@/lib/kudos/actions';
 import { track } from '@/lib/analytics/track';
-import { HASHTAG_SUGGESTIONS, MOCK_RECIPIENTS } from '@/lib/kudos/mock';
+import { HASHTAG_SUGGESTIONS } from '@/lib/kudos/mock';
 import { ROUTES } from '@/lib/routes';
-import type { KudoImage } from '@/lib/kudos/types';
+import type { KudoImage, Recipient } from '@/lib/kudos/types';
 import { validateWriteKudo, type WriteKudoFieldErrors } from '@/lib/kudos/validation';
+
+interface WriteKudoPanelProps {
+  readonly recipients: readonly Recipient[];
+}
 
 /**
  * Composition panel that hosts every field of the Viết Kudo form. Holds the
@@ -26,7 +30,7 @@ import { validateWriteKudo, type WriteKudoFieldErrors } from '@/lib/kudos/valida
  * The submit button stays disabled until the three required fields
  * (recipient, body, ≥1 hashtag) are present, per spec FR-003.
  */
-export function WriteKudoPanel() {
+export function WriteKudoPanel({ recipients }: WriteKudoPanelProps) {
   const t = useTranslations('kudos.write');
   const tError = useTranslations('kudos.write.errors');
   const router = useRouter();
@@ -122,7 +126,7 @@ export function WriteKudoPanel() {
       </h1>
 
       <RecipientCombobox
-        recipients={MOCK_RECIPIENTS}
+        recipients={recipients}
         value={recipientId}
         onChange={setRecipientId}
         error={errors.recipientId ? tError(errors.recipientId) : null}

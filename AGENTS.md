@@ -7,21 +7,25 @@ This guide provides an overview of all available prompt commands for the Momorph
 ### Development Planning & Specification
 
 #### `momorph.plan`
+
 - **Purpose**: Creates comprehensive development plans for features
 - **Use Case**: Initial project planning, feature roadmapping
 - **Output**: Structured development plan with milestones and tasks
 
 #### `momorph.constitution`
+
 - **Purpose**: Defines project constitution, guidelines, and architectural principles
 - **Use Case**: Establishing coding standards, architecture decisions, and team conventions
 - **Output**: Constitution document with project rules and standards
 
 #### `momorph.screenflow`
+
 - **Purpose**: Designs user flow and navigation patterns between screens
 - **Use Case**: UX planning, navigation architecture, user journey mapping
 - **Output**: Screenflow documentation with transitions and interactions
 
 #### `momorph.specify`
+
 - **Purpose**: Creates detailed specifications for features and components
 - **Use Case**: Breaking down features into implementable specs
 - **Output**: Technical specifications with acceptance criteria
@@ -29,6 +33,7 @@ This guide provides an overview of all available prompt commands for the Momorph
 ### Figma Integration & UI Specifications
 
 #### `momorph.specs`
+
 - **Purpose**: Generates UI component specifications from Figma designs
 - **Description**: Analyzes Figma design elements and creates stakeholder-friendly specs with validation rules and behavior descriptions
 - **Tools Used**: Figma MCP tools (`get_frame`, `get_frame_image`, `list_design_items`, etc.)
@@ -38,11 +43,13 @@ This guide provides an overview of all available prompt commands for the Momorph
 ### API & Database Design
 
 #### `momorph.apispecs`
+
 - **Purpose**: Generates API specifications and endpoint documentation
 - **Use Case**: Defining REST/GraphQL APIs, request/response schemas
 - **Output**: API documentation with endpoints, methods, and data contracts
 
 #### `momorph.database`
+
 - **Purpose**: Designs database schemas and data models
 - **Use Case**: Database architecture planning, ORM configuration
 - **Output**: Database design documents with tables, relationships, and migrations
@@ -50,11 +57,13 @@ This guide provides an overview of all available prompt commands for the Momorph
 ### Implementation
 
 #### `momorph.implement`
+
 - **Purpose**: Implements features based on specifications
 - **Use Case**: Actual code generation and implementation
 - **Output**: Working code following project standards
 
 #### `momorph.tasks`
+
 - **Purpose**: Breaks down features into actionable development tasks
 - **Use Case**: Sprint planning, task management, work breakdown
 - **Output**: Task list with priorities and dependencies
@@ -62,6 +71,7 @@ This guide provides an overview of all available prompt commands for the Momorph
 ### Testing & Quality Assurance
 
 #### `momorph.createtestcases`
+
 - **Purpose**: Generates comprehensive test cases from Figma design specifications
 - **Description**: Reads specifications from markdown files, analyzes Figma design items, and generates test cases covering all scenarios
 - **Tools Used**: Test viewpoints tools, Figma MCP tools
@@ -73,6 +83,7 @@ This guide provides an overview of all available prompt commands for the Momorph
 - **Output**: Test case documents organized by screen in `.momorph/contexts/testcases/`
 
 #### `momorph.updatetestcases`
+
 - **Purpose**: Updates existing test cases based on Figma design specification changes
 - **Description**: Analyzes differences between old and new specs, then regenerates/updates/deletes test cases accordingly
 - **Tools Used**: `list_frame_spec_diffs`, `get_frame_test_cases`
@@ -86,6 +97,7 @@ This guide provides an overview of all available prompt commands for the Momorph
 ### End-to-End Testing (Playwright)
 
 #### `momorph.setupe2e`
+
 - **Purpose**: Orchestrates complete Playwright project setup
 - **Description**: Coordinates multiple specialized prompts to create a production-ready Playwright testing project
 - **Tools Used**: Playwright tools, project configuration tools
@@ -99,6 +111,7 @@ This guide provides an overview of all available prompt commands for the Momorph
 - **Output**: Complete Playwright project structure with all configurations
 
 #### `momorph.writee2e`
+
 - **Purpose**: Generates production-ready Playwright TypeScript tests
 - **Description**: Creates tests with automatic project/fixture detection, strict POM compliance, and support for spec-driven or URL exploration inputs
 - **Tools Used**: Playwright tools, frame test cases tools
@@ -112,6 +125,7 @@ This guide provides an overview of all available prompt commands for the Momorph
 - **Output**: Playwright test files following project architecture
 
 #### `momorph.reviewe2e`
+
 - **Purpose**: Reviews Playwright E2E test changes for quality and compliance
 - **Description**: Evaluates tests for POM compliance, selector robustness, test data separation, and adherence to code review standards
 - **Tools Used**: Playwright tools, code analysis tools
@@ -127,6 +141,7 @@ This guide provides an overview of all available prompt commands for the Momorph
 ### Version Control
 
 #### `momorph.commit`
+
 - **Purpose**: Generates conventional commit messages
 - **Use Case**: Creating standardized, descriptive commit messages
 - **Output**: Formatted commit messages following conventions
@@ -149,6 +164,7 @@ This guide provides an overview of all available prompt commands for the Momorph
 ## 🎯 Workflow Examples
 
 ### New Feature Development
+
 1. `momorph.specs` → Generate specifications from Figma
 2. `momorph.createtestcases` → Create test cases
 3. `momorph.specify` → Create local screen specs
@@ -157,12 +173,14 @@ This guide provides an overview of all available prompt commands for the Momorph
 6. `momorph.commit` → Commit changes
 
 ### E2E Test Automation Setup
+
 1. `momorph.setupe2e` → Initialize Playwright project
 2. `momorph.createtestcases` → Generate test specifications
 3. `momorph.writee2e` → Implement Playwright tests
 4. `momorph.reviewe2e` → Review test quality
 
 ### Design Update Workflow
+
 1. Update Figma designs
 2. `momorph.updatetestcases` → Update test cases
 3. `momorph.writee2e` → Regenerate affected tests

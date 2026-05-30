@@ -12,3 +12,6 @@ pnpm-lock.yaml
 yarn.lock
 supabase/.branches
 supabase/.temp
+
+.claude
+.momorph
